@@ -21,7 +21,7 @@ class SignupController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed',
             'date_of_birth' => 'required',
-            'avatar' => 'mimes:jpeg,jpg,png,gif|required|max:10000' // max 10000kb
+            'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
 
         ]);
         // upload image
@@ -49,7 +49,6 @@ class SignupController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'date_of_birth' => $request->date_of_birth,
-
             ]);
         }
 
