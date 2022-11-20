@@ -17,10 +17,20 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
+
+//********* views  *********//
+
 //home
 Route::get('/', function() {
     return view('home');
 })->name('home');
+
+//posts
+Route::get('/posts', function() {
+    return view('posts.index');
+});
+
+//********* Controller *********//
 
 //dasboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
@@ -36,7 +46,4 @@ Route::post('/login', [LoginController::class, 'store'])->name('login');
 //logout
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-//posts
-Route::get('/posts', function() {
-    return view('posts.index');
-});
+
