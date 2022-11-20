@@ -10,6 +10,7 @@
         @endif
         <form action="{{ route('login') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <h1 class="text-5xl mb-5 text-center">Login</h1>
             <div class="mb-4">
                 <label for="email" class="sr-only">E-mail</label>
                 <input type="email" name="email" id="email" placeholder="E-mail" class="bg-gray-100 border-2 w-full p-2 rounded-lg
