@@ -2,6 +2,7 @@
 /public/build
 /public/hot
 /public/storage
+/public
 /storage/*.key
 /vendor
 .env
@@ -16,3 +17,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+
+*.jpg
+*.jpeg
+*.jpe
+*.png
+*.gif
