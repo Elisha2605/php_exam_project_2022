@@ -31,6 +31,12 @@
                 </div>
                 @enderror
             </div>
+            <div class="mb-4">
+                <div class="flex items-center">
+                    <input type="checkbox" name="remember" id="remeber" class="mr-2" />
+                    <label for="remeber">Remeber me</label>
+                </div>
+            </div>
             <div>
                 <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded
                     fotn-medium w-full">Login</button>

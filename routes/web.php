@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +27,13 @@ Route::get('/', function() {
     return view('home');
 })->name('home');
 
+
+
 //posts
 Route::get('/posts', function() {
     return view('posts.index');
 });
+
 
 //********* Controller *********//
 
@@ -47,3 +52,11 @@ Route::post('/login', [LoginController::class, 'store'])->name('login');
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
+
+
+
+## test ##
+Route::get('/country-list', [CountryController::class, 'index'])->name('country');
+Route::post('/country-list', [CountryController::class, 'store'])->name('country');
+
+Route::get('/language-list', [LanguageController::class, 'index'])->name('language');
