@@ -10,10 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Language extends Model
 {
     use HasFactory;
-
+ 
     protected $fillable = [
-        'name',
-        'code',
+        'user_id',
+        'lang_id',
     ];
 
     public function users() {

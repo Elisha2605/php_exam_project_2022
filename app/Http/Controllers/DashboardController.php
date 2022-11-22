@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -11,6 +12,8 @@ class DashboardController extends Controller
     // }
     
     public function index() {
-        return view('dashboard', array('user' => auth()->user()));
+        $user = Auth::user();
+        $languages = $user->languages;
+        return view('dashboard', compact('user', 'languages'));
     }
 }

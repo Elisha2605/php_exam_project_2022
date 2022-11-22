@@ -19,6 +19,10 @@
                     fotn-medium w-full">Submit</button>
             </div>
         </form>
+        {{ $user->name }}
+        @foreach($languages as $lang)
+            <li>{{ $lang->name }}
+        @endforeach
     </div>
 </div>
 @endsection

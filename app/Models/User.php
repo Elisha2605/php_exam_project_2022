@@ -49,7 +49,7 @@ class User extends Authenticatable
     ];
 
     public function languages() {
-        return $this->belongsToMany(Language::class);
+        return $this->belongsToMany(Language::class, 'user_languages', 'user_id', 'lang_id');
     }
     public function countries() {
         return $this->hasOne(Country::class);

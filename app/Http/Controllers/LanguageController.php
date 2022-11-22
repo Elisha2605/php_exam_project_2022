@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Language;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LanguageController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+        $languages = $user->languages;
         $all_languages = Language::pluck('name', 'code')->all();
-        return view('language', compact('all_languages'));
+        return view('language', compact('all_languages', 'user', 'languages'));
     }
 
     public function store(Request $request)
@@ -26,6 +30,7 @@ class LanguageController extends Controller
 
         $language_id = $result->pluck('id');
 
+        // banch insert
         $data = [];
         foreach ($language_id as $id) {
             $data[] = [
@@ -35,6 +40,6 @@ class LanguageController extends Controller
         }
         DB::table('user_languages')->insert($data);
 
-        return redirect()->route('dashboard');
+        return redirect()->back();
     }
 }
