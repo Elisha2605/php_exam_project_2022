@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Country;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,8 @@ Route::get('/users', function() {
 // countries
 Route::get('/countries', function() {
     return Country::all();
+});
+// languages
+Route::get('/languages', function() {
+    return Language::all();
 });

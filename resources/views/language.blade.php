@@ -4,11 +4,11 @@
 <div class="flex justify-center">
     <div class="w-8/12 bg-white p-6 rounded-lg mt-3">
         Languages
-        <form action="{{ route('country') }}" method="post">
+        <form action="{{ route('language') }}" method="post">
             @csrf
             <div class="form-group">
                 <!-- <label>Languages</label> -->
-                <select name="contries[]" class="form-control" id="countries" multiple="multiple">
+                <select name="languages[]" class="form-control" id="countries" multiple="multiple">
                     @foreach ($all_languages as $key => $value)
                     <option value="{{$key}}">{{ $value }}</option>
                     @endforeach

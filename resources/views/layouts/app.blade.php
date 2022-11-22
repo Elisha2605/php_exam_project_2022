@@ -56,7 +56,11 @@
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
     <script>
         new MultiSelectTag('countries')  // id
-        new MultiSelectTag('languages')
     </script>
+    <script>
+        new MultiSelectTag('languages')  // id
+    </script>
+
+
 </body>
 </html>

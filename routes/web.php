@@ -60,3 +60,4 @@ Route::get('/country-list', [CountryController::class, 'index'])->name('country'
 Route::post('/country-list', [CountryController::class, 'store'])->name('country');
 
 Route::get('/language-list', [LanguageController::class, 'index'])->name('language');
+Route::post('/language-list', [LanguageController::class, 'store'])->name('language');
