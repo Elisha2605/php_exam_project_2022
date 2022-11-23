@@ -4,10 +4,6 @@
    <div class="flex justify-center">
         <div class="w-8/12 bg-white p-6 rounded-lg mt-3">
             dashboard 
-            @foreach($languages as $lang)
-                <li>{{ $lang->name }}
-            @endforeach
-
         </div>
    </div>
 @endsection

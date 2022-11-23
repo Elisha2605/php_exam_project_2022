@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
+use App\Models\Country;
 use Image; 
 
 class SignupController extends Controller
 {
     public function index() {
-        return view('auth.signup');
+        $all_countries = Country::pluck('name', 'code')->all();
+        return view('auth.signup', compact('all_countries'));
     }
     public function store(Request $request) {
         // validate
@@ -21,8 +24,8 @@ class SignupController extends Controller
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed',
             'date_of_birth' => 'required',
+            'country' => 'required',
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
-
         ]);
         // upload image
         if($request->hasFile('avatar')) {
@@ -33,7 +36,7 @@ class SignupController extends Controller
             $image->move($image_path, $image_name);
             
             // create user with image
-            User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
@@ -43,7 +46,7 @@ class SignupController extends Controller
             ]);
         } else {
             // create without image
-            User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'lastname' => $request->lastname,
                 'email' => $request->email,
@@ -51,7 +54,26 @@ class SignupController extends Controller
                 'date_of_birth' => $request->date_of_birth,
             ]);
         }
+        
+        // insert country
+        $selected_data = $request->country;
+        $user_id = $this->lastCreatedUserId = $user->id;
 
+        $query = DB::table('countries')
+            ->select('id')
+            ->where('code', $selected_data)
+            ->get();
+
+        $code_id = $query->pluck('id');
+        
+        $data = [
+            'user_id' => $user_id,
+            'country_id' => $code_id[0],
+            'created_at' => NOW(),
+            'updated_at' => NOW()
+        ];
+        
+        DB::table('user_country')->insert($data);
         
         // redirect
         return redirect()->route('login');

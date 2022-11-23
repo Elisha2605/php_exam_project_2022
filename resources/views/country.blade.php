@@ -8,7 +8,7 @@
             @csrf
             <div class="form-group">
                 <!-- <label>Country</label> -->
-                <select name="contries[]" class="form-control" id="countries" multiple="multiple">
+                <select name="country" class="form-control" id="country">
                     @foreach ($all_countries as $key => $value)
                     <option value="{{$key}}">{{ $value }}</option>
                     @endforeach
@@ -19,6 +19,10 @@
                     fotn-medium w-full">Submit</button>
             </div>
         </form>
+        @foreach($country as $flag)
+            {{ $flag->name }}
+            <img class="w-8 h-5 object-fill" src="/images/flags/{{ $flag->code }}.png" alt="">
+        @endforeach
     </div>
 </div>
 @endsection
