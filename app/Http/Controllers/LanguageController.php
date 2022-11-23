@@ -36,6 +36,8 @@ class LanguageController extends Controller
             $data[] = [
                 'user_id'    => auth()->user()->id,
                 'lang_id'    => $id,
+                'created_at' => NOW(),
+                'updated_at' => NOW()
             ];
         }
         DB::table('user_languages')->insert($data);

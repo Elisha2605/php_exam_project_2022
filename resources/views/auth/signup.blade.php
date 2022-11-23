@@ -72,6 +72,22 @@
                     @enderror
                 </div>
                 <div class="mb-4">
+                    <label for="date_of_birth" class="sr-only">Country</label>
+                    <select name="country" 
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            @error('country') border-red-500 @enderror" id="country">
+                        @foreach ($all_countries as $key => $value)
+                        <option class="" value="" selected disabled hidden>-- Select Country --</option>
+                        <option value="{{$key}}">{{ $value }}</option>
+                        @endforeach
+                    </select>
+                    @error('country')
+                        <div class="text-red-500 mt-2 text-sm">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-4">
                     <label for="date_of_birth" class="sr-only">Date of birth</label>
                     <input type="date" name="date_of_birth" id="date_of_birth" 
                             class="bg-gray-100 border-2 w-full p-2 rounded-lg

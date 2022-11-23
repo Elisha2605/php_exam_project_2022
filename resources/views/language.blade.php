@@ -8,7 +8,7 @@
             @csrf
             <div class="form-group">
                 <!-- <label>Languages</label> -->
-                <select name="languages[]" class="form-control" id="countries" multiple="multiple">
+                <select name="languages[]" class="form-control" id="languages" multiple="multiple">
                     @foreach ($all_languages as $key => $value)
                     <option value="{{$key}}">{{ $value }}</option>
                     @endforeach

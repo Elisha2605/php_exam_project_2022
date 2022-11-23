@@ -11,10 +11,10 @@ class Language extends Model
 {
     use HasFactory;
  
-    protected $fillable = [
-        'user_id',
-        'lang_id',
-    ];
+    // protected $fillable = [
+    //     'user_id',
+    //     'lang_id',
+    // ];
 
     public function users() {
         return $this->belongsToMany(User::class);
