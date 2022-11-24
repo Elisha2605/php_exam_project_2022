@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -14,9 +15,14 @@ class ProfileController extends Controller
         $languages = $user->languages;
         return view('profile', compact('user', 'country', 'languages'));
     }
-    public function store(Request $request)
+    public function updateBio(Request $request, $id)
     {
-        dd($request->bio);
+        $this->validate($request, [
+            'bio'=>'required|max:500'
+        ]);
+        User::find($id)->update([
+            'bio' => $request->bio,
+        ]);
         
         return redirect()->back();
     }

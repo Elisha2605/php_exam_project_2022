@@ -8,7 +8,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +27,6 @@ use App\Http\Controllers\UserProfileController;
 Route::get('/', function() {
     return view('home');
 })->name('home');
-
-
 
 //posts
 Route::get('/posts', function() {
@@ -56,15 +53,14 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 // dasboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
 // profile
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::post('/profile', [ProfileController::class, 'store'])->name('profile');
+Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
+Route::patch('/profile/{id}', [ProfileController::class, 'updateBio'])->name('profile');
 
 
 
 
 
-
-## test ##
+## test ## To be deleted ##
 Route::get('/country-list', [CountryController::class, 'index'])->name('country');
 Route::post('/country-list', [CountryController::class, 'store'])->name('country');
 

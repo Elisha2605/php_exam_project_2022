@@ -31,12 +31,13 @@
             <li>
                 <a href="{{ route('language') }}" class="p-3">Language</a>
             </li>
-            <li>
-                <a href="{{ route('profile') }}" class="p-3">Profile</a>
-            </li>
+            
         </ul>
         @auth
         <ul class="flex items-center">
+            <li>
+                <a href="{{ route('profile', auth()->user()->id) }}" class="p-3">Profile</a>
+            </li>
             <li>
                 <div class="flex ">
                     <img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
@@ -61,11 +62,13 @@
     </nav>
     @yield('content')
 
-    
+    <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+    <script src="/js/app.js"></script>
+
     <script>
         new MultiSelectTag('languages')  // id
     </script>

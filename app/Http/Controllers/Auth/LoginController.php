@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -26,6 +27,6 @@ class LoginController extends Controller
             return back()->with('status', 'Invalid login details');
         };
 
-        return redirect()->route('profile');
+        return redirect()->route('profile', Auth::user()->id);
     }
 }

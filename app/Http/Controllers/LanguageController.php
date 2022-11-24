@@ -20,28 +20,27 @@ class LanguageController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->bio);
-        // $selected_languages = $request->languages;
+        $selected_languages = $request->languages;
 
-        // $result = DB::table('languages')
-        //     ->select('id')
-        //     ->whereIn('code', $selected_languages)
-        //     ->get();
+        $result = DB::table('languages')
+            ->select('id')
+            ->whereIn('code', $selected_languages)
+            ->get();
 
-        // $language_id = $result->pluck('id');
+        $language_id = $result->pluck('id');
 
-        // // banch insert
-        // $data = [];
-        // foreach ($language_id as $id) {
-        //     $data[] = [
-        //         'user_id'    => auth()->user()->id,
-        //         'lang_id'    => $id,
-        //         'created_at' => NOW(),
-        //         'updated_at' => NOW()
-        //     ];
-        // }
-        // DB::table('user_languages')->insert($data);
+        // banch insert
+        $data = [];
+        foreach ($language_id as $id) {
+            $data[] = [
+                'user_id'    => auth()->user()->id,
+                'lang_id'    => $id,
+                'created_at' => NOW(),
+                'updated_at' => NOW()
+            ];
+        }
+        DB::table('user_languages')->insert($data);
 
-        // return redirect()->back();
+        return redirect()->back();
     }
 }
