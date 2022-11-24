@@ -57,7 +57,7 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
 // profile
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::post('/profile', [ProfileController::class], 'store');
+Route::post('/profile', [ProfileController::class, 'store'])->name('profile');
 
 
 

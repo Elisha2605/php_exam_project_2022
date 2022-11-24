@@ -46,7 +46,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <!--  -->
-                        <form action="{{ route('language') }}" method="post">
+                        <form action="{{ route('profile') }}" method="post">
                             @csrf
                             <textarea 
                                     name="bio"
