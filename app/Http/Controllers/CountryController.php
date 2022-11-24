@@ -18,6 +18,7 @@ class CountryController extends Controller
    }
 
    public function store(Request $request) {
+   
       $selected_data = $request->country;
       $user_id = Auth::user()->id;
 

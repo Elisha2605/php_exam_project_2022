@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,24 +34,31 @@ Route::get('/', function() {
 //posts
 Route::get('/posts', function() {
     return view('posts.index');
-});
+})->name('posts');
 
 
-//********* Controller *********//
+//********* Auth URLs *********//
 
-//dasboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
-
-//signup
+// signup
 Route::get('/signup', [SignupController::class, 'index'])->name('signup');
 Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 
-//login
+// login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
 
-//logout
+// logout
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
+
+
+//********* Http URLs *********//
+
+// dasboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+// profile
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/profile', [ProfileController::class], 'store');
+
 
 
 
