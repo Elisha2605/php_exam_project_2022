@@ -15,8 +15,7 @@
                         </div>
                         @enderror
                     </div>
-                    <button type="submit" class="bg-gray-800 text-white px-2 py-1 rounded font-medium w-full">Submit
-                    </button>
+                    <button type="submit" class="bg-gray-800 text-white px-2 py-1 rounded font-medium w-full">Submit</button>
                 </form>
             </div>
         </div>

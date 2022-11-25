@@ -56,6 +56,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::patch('/profile/{id}', [ProfileController::class, 'editBio'])->name('profile');
 Route::patch('/profile/{id}', [ProfileController::class, 'editAvatar'])->name('profile');
+Route::patch('/profile/{id}', [ProfileController::class, 'editLanguages'])->name('profile');
 
 
 
@@ -65,5 +66,3 @@ Route::patch('/profile/{id}', [ProfileController::class, 'editAvatar'])->name('p
 Route::get('/country-list', [CountryController::class, 'index'])->name('country');
 Route::post('/country-list', [CountryController::class, 'store'])->name('country');
 
-Route::get('/language-list', [LanguageController::class, 'index'])->name('language');
-Route::post('/language-list', [LanguageController::class, 'store'])->name('language');

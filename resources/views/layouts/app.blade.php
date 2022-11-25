@@ -28,10 +28,6 @@
             <li>
                 <a href="{{ route('country') }}" class="p-3">Country</a>
             </li>
-            <li>
-                <a href="{{ route('language') }}" class="p-3">Language</a>
-            </li>
-            
         </ul>
         @auth
         <ul class="flex items-center">

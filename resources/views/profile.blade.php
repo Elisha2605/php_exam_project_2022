@@ -4,6 +4,7 @@
 <!-- Modals -->
 @include('modals/__edit-avatar')
 @include('modals/__edit-bio')
+@include('modals/__edit-language')
 <!-- EndModals -->
 
 <div class="w-4/5 h-1/3 mt-6 bg-white grid p-10  grid-cols-2 mx-auto text-center divide-x shadow-xl rounded-lg">
@@ -65,9 +66,13 @@
             </div>
             <h3 class="text-xl font-light">Languages</h3>
             <div class="flex flex-wrap gap-2 w-full">
-                @foreach($languages as $language)
-                    <span class="bg-gray-800 text-sm text-white font-light px-5 py-1 rounded-2xl shadow-md">{{ $language->name }}</span>
-                @endforeach
+             @foreach($languages as $language)
+                 <span class="bg-gray-800 text-sm text-white font-light px-5 py-1 rounded-2xl shadow-md">{{ $language->name }}</span>
+             @endforeach
+            </div>
+            <div class="hover:opacity-80 cursor-pointer" href="" data-toggle="modal" data-target="#editLanguage">
+                <img class="w-5 h-5 inline-block" src="/svg/add.png" alt="">
+                <span>add</span>
             </div>
         </div>
     </div>
