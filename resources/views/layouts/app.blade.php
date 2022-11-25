@@ -14,7 +14,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-gray-200">
-    <nav class="p-6 bg-white flex justify-between">
+    <nav class="p-2 h-24 bg-white flex justify-between">
         <ul class="flex items-center">
             <li>
                 <a href="{{ route('home') }}" class="p-3">Home</a>
@@ -36,12 +36,10 @@
         @auth
         <ul class="flex items-center">
             <li>
-                <a href="{{ route('profile', auth()->user()->id) }}" class="p-3">Profile</a>
-            </li>
-            <li>
                 <div class="flex ">
-                    <img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
-                    <a href="" class="p-3">{{auth()->user()->name . " " . auth()->user()->lastname}}</a>
+                    <a href="{{ route('profile', auth()->user()->id) }}" class="p-3">
+                        <img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
+                    </a>
                 </div>
             </li>
             <li>

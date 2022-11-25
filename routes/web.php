@@ -54,7 +54,8 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
 // profile
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
-Route::patch('/profile/{id}', [ProfileController::class, 'updateBio'])->name('profile');
+Route::patch('/profile/{id}', [ProfileController::class, 'editBio'])->name('profile');
+Route::patch('/profile/{id}', [ProfileController::class, 'editAvatar'])->name('profile');
 
 
 
