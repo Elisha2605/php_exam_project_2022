@@ -27,6 +27,6 @@ class LoginController extends Controller
             return back()->with('status', 'Invalid login details');
         };
 
-        return redirect()->route('profile', Auth::user()->id);
+        return redirect()->route('userProfile', Auth::user()->id);
     }
 }

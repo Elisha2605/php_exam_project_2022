@@ -8,6 +8,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\UserUpdateAvatarController;
+use App\Http\Controllers\User\UserUpdateBioController;
+use App\Http\Controllers\User\UserUpdateLanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +32,12 @@ Route::get('/', function() {
     return view('home');
 })->name('home');
 
-//posts
-Route::get('/posts', function() {
-    return view('posts.index');
-})->name('posts');
 
 
 //********* Auth URLs *********//
 
 // signup
 Route::get('/signup', [SignupController::class, 'index'])->name('signup');
-Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 
 // login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -49,20 +48,27 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
 //********* Http URLs *********//
-
 // dasboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
+
+// user
+Route::get('profile/user/{id}', [UserController::class, 'show'])->name('userProfile');
+Route::patch('profile/user/update-bio/{id}', [UserUpdateBioController::class, 'updateBio'])->name('updateBio');
+Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::class, 'updateAvatar'])->name('updateAvatar');
+Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
+
+
+
+
+
+
+
+
+
+
+
 // profile
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
 Route::patch('/profile/{id}', [ProfileController::class, 'updateBio'])->name('profile');
 
 
-
-
-
-## test ## To be deleted ##
-Route::get('/country-list', [CountryController::class, 'index'])->name('country');
-Route::post('/country-list', [CountryController::class, 'store'])->name('country');
-
-Route::get('/language-list', [LanguageController::class, 'index'])->name('language');
-Route::post('/language-list', [LanguageController::class, 'store'])->name('language');
