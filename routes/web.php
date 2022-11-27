@@ -14,6 +14,7 @@ use App\Http\Controllers\User\UserUpdateBioController;
 use App\Http\Controllers\User\UserUpdateLanguageController;
 use App\Http\Controllers\User\UserUpdateCountryController;
 use App\Http\Controllers\User\UserUpdateNameController;
+use App\Http\Controllers\User\UserUpdateProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 // user
 Route::get('profile/user/{id}', [UserController::class, 'show'])->name('userProfile');
+Route::get('profile/user/update-profile/{id}', [UserUpdateProfileController::class, 'updateProfile'])->name('updateProfile');
 Route::patch('profile/user/update-bio/{id}', [UserUpdateBioController::class, 'updateBio'])->name('updateBio');
 Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::class, 'updateAvatar'])->name('updateAvatar');
 Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');

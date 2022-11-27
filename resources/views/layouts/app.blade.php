@@ -27,8 +27,11 @@
         <ul class="flex items-center">
             <li>
                 <div class="flex ">
-                    <a href="{{ route('userProfile', $user->id) }}" class="p-3"><img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt=""></a>
+                    <a href="{{ route('userProfile', auth()->user()->id) }}" class="p-3"><img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt=""></a>
                 </div>
+            </li>
+            <li>
+                <a href="{{ route('updateProfile', auth()->user()->id) }}" class="p-3">update profile</a>
             </li>
             <li>
                 <a href="{{ route('logout') }}" class="p-3">Logout</a>
