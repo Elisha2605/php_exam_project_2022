@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link 
-            rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-            crossorigin="anonymous"
-    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    <link rel="stylesheet" href="">
     <title>Get-hygge</title>
     @vite('resources/css/app.css')
 </head>
+
 <body class="bg-gray-200">
-    <nav class="p-2 h-24 bg-white flex justify-between">
-        <ul class="flex items-center">
+    <nav class="p-4 h-24 bg-white flex justify-between">
+        <ul class="flex items-center pl-20">
             <li>
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
@@ -24,22 +23,31 @@
             </li>
         </ul>
         @auth
-        <ul class="flex items-center">
+        <ul class="flex items-center pr-20">
             <li>
-                <div class="flex ">
+                <!-- <div class="flex ">
                     <a href="{{ route('userProfile', auth()->user()->id) }}" class="p-3"><img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt=""></a>
+                </div> -->
+                <div class="flex dropdown show">
+                    <a class="flex flex-row items-center gap-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}" class="p-3">Edit profile</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}" class="p-3">Logout</a>
+                    </div>
                 </div>
             </li>
-            <li>
+            <!-- <li>
                 <a href="{{ route('updateProfile', auth()->user()->id) }}" class="p-3">update profile</a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <a href="{{ route('logout') }}" class="p-3">Logout</a>
-            </li>
+            </li> -->
         </ul>
         @endauth
         @guest
-        <ul class="flex items-center">
+        <ul class="flex items-center pr-20">
             <li>
                 <a href="{{ route('login') }}" class="p-3">Login</a>
             </li>
@@ -59,7 +67,8 @@
     <script src="/js/app.js"></script>
 
     <script>
-        new MultiSelectTag('languages')  // id
+        new MultiSelectTag('languages') // id
     </script>
 </body>
+
 </html>

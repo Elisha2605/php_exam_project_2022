@@ -7,7 +7,7 @@
             <img class="block mx-auto rounded-full object-cover h-[230px] w-[230px] shadow-md" src="/uploads/avatars/{{ $user->avatar }}" alt="">
             <div data-toggle="modal" data-target="#editAvatar" class="flex justify-center rounded-br-full rounded-bl-full h-28 w-[230px] 
                         absolute bottom-0 items-center opacity-0 hover:opacity-40 hover:bg-black 
-                        duration-200 text-white text-2xl cursor-pointer">
+                      text-white text-2xl cursor-pointer">
                 Edit image
                 <img src="/svg/photo.png" class="bg-gray-800 w-12 h-12 rounded-full absolute bottom-0 ml-32 hover:opacity-80 cursor-pointer"></img>
             </div>
