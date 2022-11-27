@@ -11,7 +11,7 @@ class UserUpdateBioController extends Controller
     public function updateBio(Request $request, $id)
     {
         $this->validate($request, [
-            'bio'=>'required|max:500'
+            'bio'=>'max:400'
         ]);
         User::find($id)->update([
             'bio' => $request->bio,

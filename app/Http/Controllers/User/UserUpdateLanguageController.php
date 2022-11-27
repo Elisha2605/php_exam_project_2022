@@ -10,6 +10,7 @@ class UserUpdateLanguageController extends Controller
 {
     public function updateLanguage(Request $request, $id)
     {
+
         // getting code id from db
         $query = DB::table('languages')
             ->select('id')
