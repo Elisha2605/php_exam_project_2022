@@ -42,6 +42,7 @@ class SignupController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'date_of_birth' => $request->date_of_birth,
+                'country' => $request->country,
                 'avatar' => $image_name,
             ]);
         } else {
@@ -52,6 +53,7 @@ class SignupController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'date_of_birth' => $request->date_of_birth,
+                'country' => $request->country,
             ]);
         }
         

@@ -12,6 +12,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserUpdateAvatarController;
 use App\Http\Controllers\User\UserUpdateBioController;
 use App\Http\Controllers\User\UserUpdateLanguageController;
+use App\Http\Controllers\User\UserUpdateCountryController;
+use App\Http\Controllers\User\UserUpdateNameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,7 @@ Route::get('/', function() {
 
 // signup
 Route::get('/signup', [SignupController::class, 'index'])->name('signup');
+Route::post('/signup', [SignupController::class, 'store'])->name('signup');
 
 // login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -56,6 +59,8 @@ Route::get('profile/user/{id}', [UserController::class, 'show'])->name('userProf
 Route::patch('profile/user/update-bio/{id}', [UserUpdateBioController::class, 'updateBio'])->name('updateBio');
 Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::class, 'updateAvatar'])->name('updateAvatar');
 Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
+Route::patch('profile/user/update-country/{id}', [UserUpdateCountryController::class, 'updateCountry'])->name('updateCountry');
+Route::patch('profile/user/update-name/{id}', [UserUpdateNameController::class, 'updateName'])->name('updateName');
 
 
 

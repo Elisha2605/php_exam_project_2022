@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use App\Models\Language;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user.profile', ['user' => User::findOrFail($id), 'languages' => Language::all()]);
+        return view('user.profile', [
+            'user' => User::findOrFail($id), 
+            'languages' => Language::all(),
+            'countries' => Country::all()
+        ]);
     }
 }

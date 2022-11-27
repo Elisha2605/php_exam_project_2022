@@ -11,12 +11,12 @@ class UserUpdateLanguageController extends Controller
     public function updateLanguage(Request $request, $id)
     {
         // getting code id from db
-        $result = DB::table('languages')
+        $query = DB::table('languages')
             ->select('id')
             ->whereIn('code', $request->languages)
             ->get();
 
-        $language_id = $result->pluck('id');
+        $language_id = $query->pluck('id');
 
         // banch insert
         $data = [];
