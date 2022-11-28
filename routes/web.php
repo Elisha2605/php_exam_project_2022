@@ -15,6 +15,7 @@ use App\Http\Controllers\User\UserUpdateLanguageController;
 use App\Http\Controllers\User\UserUpdateCountryController;
 use App\Http\Controllers\User\UserUpdateNameController;
 use App\Http\Controllers\User\UserUpdateProfileController;
+use App\Http\Controllers\User\UserDeleteLanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +64,8 @@ Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::cla
 Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
 Route::patch('profile/user/update-country/{id}', [UserUpdateCountryController::class, 'updateCountry'])->name('updateCountry');
 Route::patch('profile/user/update-name/{id}', [UserUpdateNameController::class, 'updateName'])->name('updateName');
+
+Route::delete('profile/user/delete-language/{id}', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('deleteLanguage');
 
 
 

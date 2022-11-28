@@ -25,25 +25,16 @@
         @auth
         <ul class="flex items-center pr-20">
             <li>
-                <!-- <div class="flex ">
-                    <a href="{{ route('userProfile', auth()->user()->id) }}" class="p-3"><img class="w-12 h-12 object-cover  rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt=""></a>
-                </div> -->
                 <div class="flex dropdown show">
                     <a class="flex flex-row items-center gap-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}" class="p-3">Edit profile</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}" class="p-3">Logout</a>
+                        <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}">Edit profile</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </div>
             </li>
-            <!-- <li>
-                <a href="{{ route('updateProfile', auth()->user()->id) }}" class="p-3">update profile</a>
-            </li> -->
-            <!-- <li>
-                <a href="{{ route('logout') }}" class="p-3">Logout</a>
-            </li> -->
         </ul>
         @endauth
         @guest

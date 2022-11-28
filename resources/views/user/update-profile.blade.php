@@ -77,7 +77,17 @@
             <h3 class="text-xl font-light">Languages</h3>
             <div class="flex flex-wrap gap-2 w-full">
                 @foreach($user->languages as $language)
-                <span class="bg-gray-800 text-sm text-white font-light px-5 py-1 rounded-2xl shadow-md">{{ $language->name }}</span>
+                <form action="{{ route('deleteLanguage', $user->id) }}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <input name="{{$language->id}}" 
+                           type="submit" 
+                           class="bg-gray-800 text-sm 
+                                text-white font-light px-3 py-1 
+                                rounded-2xl shadow-md relative 
+                                cursor-pointer hover:bg-red-800" 
+                            value="{{ $language->name }}&emsp;&emsp;&emsp; x" />
+                </form>
                 @endforeach
             </div>
             @if($user->id == auth()->user()->id)
