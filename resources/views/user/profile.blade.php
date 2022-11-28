@@ -47,3 +47,33 @@
 </div>
 
 @endsection
+
+
+
+
+
+
+<!-- 
+  <div class="flex flex-wrap gap-5">
+  <div class="flex flex-col justify-center items-center w-80 h-auto bg-white p-5 rounded-3xl relative">
+      <img class="w-8 h-5 object-fill absolute top-5 right-7" src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
+      <img class="block mx-auto rounded-full object-cover h-[200px] w-[200px] shadow-md" src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">
+      <div class="flex items-center flex-col mt-2">
+            <span class="text-4xl">Mathiew</span>
+            <span class="text-lg font-extralight">Hernandez</span>
+      </div>
+      <hr class="my-4 w-52 h-px border-0 dark:bg-gray-300">
+      <h2 class="font-bold">Speaks</h2>
+      <div class="flex flex-wrap gap-1 mt-2">
+        <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">English</span>
+        <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">Swahili</span>
+        <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">French</span>
+        <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">French</span>
+      </div>
+      <div class="flex flex-col justify-center items-center mt-6">
+            <span class="font-medium">Connections</span>
+            <span class="text-4xl font-thin">0</span>
+      </div>
+  </div>
+  </div>
+ -->

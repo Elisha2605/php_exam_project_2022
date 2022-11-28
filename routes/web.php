@@ -15,6 +15,7 @@ use App\Http\Controllers\User\UserUpdateNameController;
 use App\Http\Controllers\User\UserUpdateProfileController;
 use App\Http\Controllers\User\UserDeleteLanguageController;
 use App\Http\Controllers\User\UserDeleteAccountController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,29 +33,24 @@ use App\Http\Controllers\User\UserDeleteAccountController;
 
 //home
 Route::get('/', function() {
-    return view('home');
+    $users = User::all();
+    return view('home', compact('users'));
 })->name('home');
 
 
 
 //********* Auth URLs *********//
-
 // signup
 Route::get('/signup', [SignupController::class, 'index'])->name('signup');
 Route::post('/signup', [SignupController::class, 'store'])->name('signup');
-
 // login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login');
-
 // logout
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
 
 //********* Http URLs *********//
-// dasboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard'); 
-
 // user
 Route::get('profile/user/{id}', [UserController::class, 'show'])->name('userProfile');
 Route::get('profile/user/update-profile/{id}', [UserUpdateProfileController::class, 'updateProfile'])->name('updateProfile');
@@ -63,22 +59,10 @@ Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::cla
 Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
 Route::patch('profile/user/update-country/{id}', [UserUpdateCountryController::class, 'updateCountry'])->name('updateCountry');
 Route::patch('profile/user/update-name/{id}', [UserUpdateNameController::class, 'updateName'])->name('updateName');
-
 Route::delete('profile/user/delete-language/{id}', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('deleteLanguage');
 Route::get('profile/user/delete-account/{id}', [UserDeleteAccountController::class, 'deleteAccount'])->name('deleteAccount');
 
 
 
-
-
-
-
-
-
-
-
-// profile
-Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
-Route::patch('/profile/{id}', [ProfileController::class, 'updateBio'])->name('profile');
 
 

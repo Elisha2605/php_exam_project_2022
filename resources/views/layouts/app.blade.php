@@ -27,9 +27,6 @@
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
             <li>
-                <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
-            </li>
-            <li>
                 <div class="flex dropdown show pl-3">
                     <a class="flex flex-row items-center gap-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
