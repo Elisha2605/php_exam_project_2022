@@ -14,23 +14,25 @@
 
 <body class="bg-gray-200">
     <nav class="p-4 h-24 bg-white flex justify-between">
-        <ul class="flex items-center pl-20">
+        <ul class="flex items-center justify-center pl-20">
             <li>
-               <img class="w-28" src="/logo.png" alt="">
+                <a class="p-3" href="">
+                    <img class="w-48" src="/logo.png" alt="">
+                </a>
             </li>
+        </ul>
+        @auth
+        <ul class="flex items-center pr-20">
             <li>
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
             <li>
                 <a href="{{ route('dashboard') }}" class="p-3">Dashboard</a>
             </li>
-        </ul>
-        @auth
-        <ul class="flex items-center pr-20">
             <li>
-                <div class="flex dropdown show">
+                <div class="flex dropdown show pl-3">
                     <a class="flex flex-row items-center gap-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
+                        <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}">Edit profile</a>
