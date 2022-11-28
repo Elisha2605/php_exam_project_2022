@@ -5,8 +5,6 @@ use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserUpdateAvatarController;
@@ -16,6 +14,7 @@ use App\Http\Controllers\User\UserUpdateCountryController;
 use App\Http\Controllers\User\UserUpdateNameController;
 use App\Http\Controllers\User\UserUpdateProfileController;
 use App\Http\Controllers\User\UserDeleteLanguageController;
+use App\Http\Controllers\User\UserDeleteAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +65,7 @@ Route::patch('profile/user/update-country/{id}', [UserUpdateCountryController::c
 Route::patch('profile/user/update-name/{id}', [UserUpdateNameController::class, 'updateName'])->name('updateName');
 
 Route::delete('profile/user/delete-language/{id}', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('deleteLanguage');
+Route::get('profile/user/delete-account/{id}', [UserDeleteAccountController::class, 'deleteAccount'])->name('deleteAccount');
 
 
 

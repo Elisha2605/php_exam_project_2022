@@ -59,7 +59,7 @@
         </div>
         @endif
         <hr>
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-3 relative">
             <h3 class="text-xl font-light">Country</h3>
             <div>
                 @foreach($user->country as $c)
@@ -80,13 +80,10 @@
                 <form action="{{ route('deleteLanguage', $user->id) }}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <input name="{{$language->id}}" 
-                           type="submit" 
-                           class="bg-gray-800 text-sm 
+                    <input name="{{$language->id}}" type="submit" class="bg-gray-800 text-sm 
                                 text-white font-light px-3 py-1 
                                 rounded-2xl shadow-md relative 
-                                cursor-pointer hover:bg-red-800" 
-                            value="{{ $language->name }}&emsp;&emsp;&emsp; x" />
+                                cursor-pointer hover:bg-red-600" value="{{ $language->name }}&emsp;&emsp;&emsp; x" />
                 </form>
                 @endforeach
             </div>
@@ -96,6 +93,15 @@
                 <span class="text-xs">Add language</span>
             </div>
             @endif
+            <a class="cursel-pointer" href="{{ route('userProfile', auth()->user()->id) }}">
+                <a onclick="return confirm('Are you sure you want to delete your account?')" href="{{ route('deleteAccount', auth()->user()->id) }}" class="flex flex-row bg-red-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer">
+                    <img src="/svg/delete-icon.svg"></img>
+                    <div class="flex flex-col pl-2 items-center">
+                        <span class="text-xs text-red-600">Delete</span>
+                        <span class="text-xs text-red-600">(account)</span>
+                    </div>
+                </a>
+            </a>
         </div>
     </div>
 </div>

@@ -16,6 +16,9 @@
     <nav class="p-4 h-24 bg-white flex justify-between">
         <ul class="flex items-center pl-20">
             <li>
+               <img class="w-28" src="/logo.png" alt="">
+            </li>
+            <li>
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
             <li>
