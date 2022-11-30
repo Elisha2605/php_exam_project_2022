@@ -4,6 +4,10 @@
 <div class="w-4/5 h-1/3 mt-6 bg-white grid p-10  grid-cols-2 mx-auto text-center divide-x shadow-xl rounded-lg">
     <div class="p-4 text-black ">
         <div class="flex justify-around relative">
+        <a class="cursel-pointer top-0 left-0 absolute" href="{{ route('home')}}">
+            <img src="/svg/back-icon.svg" class="bg-gray-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer inline-block"></img>
+            <span class="text-xs">Go back</span>
+        </a>
             <img class="block mx-auto rounded-full object-cover h-[230px] w-[230px] shadow-md" src="/uploads/avatars/{{ $user->avatar }}" alt="">
             <div data-toggle="modal" data-target="#editAvatar" class="flex justify-center rounded-br-full rounded-bl-full h-28 w-[230px] 
                         absolute bottom-0 items-center opacity-0 hover:opacity-40 hover:bg-black 
@@ -53,7 +57,7 @@
 
 
 
-<!-- 
+<!-- users card component
   <div class="flex flex-wrap gap-5">
   <div class="flex flex-col justify-center items-center w-80 h-auto bg-white p-5 rounded-3xl relative">
       <img class="w-8 h-5 object-fill absolute top-5 right-7" src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="">

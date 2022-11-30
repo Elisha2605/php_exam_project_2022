@@ -93,6 +93,7 @@
                 <span class="text-xs">Add language</span>
             </div>
             @endif
+            @if($user->id == auth()->user()->id)
             <a class="cursel-pointer" href="{{ route('userProfile', auth()->user()->id) }}">
                 <a onclick="return confirm('Are you sure you want to delete your account?')" href="{{ route('deleteAccount', auth()->user()->id) }}" class="flex flex-row bg-red-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer">
                     <img src="/svg/delete-icon.svg"></img>
@@ -102,6 +103,7 @@
                     </div>
                 </a>
             </a>
+            @endif
         </div>
     </div>
 </div>

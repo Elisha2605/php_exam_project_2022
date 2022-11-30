@@ -13,7 +13,7 @@
 </head>
 
 <body class="bg-gray-200">
-    <nav class="p-4 h-24 bg-white flex justify-between">
+    <nav class="p-4 h-24 bg-white flex justify-between sticky top-0 z-30 w-full">
         <ul class="flex items-center justify-center pl-20">
             <li>
                 <a class="p-3" href="">
@@ -23,13 +23,18 @@
         </ul>
         @auth
         <ul class="flex items-center pr-20">
-            <li>
+            <li class="">
                 <a href="{{ route('home') }}" class="p-3">Home</a>
             </li>
+            <li class="">
+                <a href="{{ route('userProfile', auth()->user()->id) }}" class="p-3">Profile</a>
+            </li>
+            |
             <li>
                 <div class="flex dropdown show pl-3">
-                    <a class="flex flex-row items-center gap-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
+                    <a class="flex flex-row items-center gap-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="text-sm text-gray-900 font-light">{{ auth()->user()->name }} {{ auth()->user()->lastname }}</span>    
+                    <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}">Edit profile</a>

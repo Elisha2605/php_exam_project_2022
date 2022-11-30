@@ -17,13 +17,14 @@ class UserUpdateCountryController extends Controller
                     ->where('code', $request->country)
                     ->get();
         $country_id = $query[0]->id;
+        
       
         DB::table('user_country')
             ->where('user_id', $id)
             ->update([
                 'country_id' => $country_id,
                 'updated_at' => NOW()
-            ]);
+        ]);
 
         return redirect()->back();
     }
