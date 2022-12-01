@@ -5,7 +5,7 @@
         <div class="w-4/12 bg-white p-6 rounded-lg mt-3">
             <form action="{{ route('signup') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <h1 class="text-5xl mb-5 text-center">Signup</h1>
+                <h1 class="text-5xl mb-4 text-center font-thin">Signup</h1>
                 <div class="mb-4">
                     <label for="name" class="sr-only">Your name</label>
                     <input type="text" name="name" id="name" placeholder="First name" 
@@ -113,8 +113,7 @@
                     @enderror
                 </div>
                 <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded
-                    fotn-medium w-full">Signup</button>
+                    <button type="submit" class="bg-gray-800 text-white text-2xl px-2 py-3 rounded font-thin w-full">Signup</button>
                 </div>
             </form>
         </div>

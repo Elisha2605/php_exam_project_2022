@@ -8,11 +8,9 @@ use Illuminate\Http\Request;
 
 class UserDeleteAccountController extends Controller
 {
-    public function deleteAccount($id)
+    public function deleteAccount(User $user)
     {
-        $user = User::findOrFail($id);
         $user->delete();
-
         return redirect()->route('login');
     }
 }

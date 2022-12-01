@@ -4,8 +4,8 @@
 <div class="flex justify-center">
     <div class="flex flex-wrap gap-5 w-9/12 p-6 rounded-lg mt-3">
         @foreach($users as $user)
-        <a href="{{ route('userProfile', $user->id) }}">
-            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0">
+        <a href="{{ route('profile.show', $user) }}">
+            <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter hover:grayscale-0"> <!-- grayscale-->
                 <div class="flex flex-col justify-center items-center w-80 h-auto bg-white p-5 rounded-3xl scale-100 hover:scale-105 duration-300 relative">
                     @foreach($user->country as $c)
                     <img class="w-8 h-5 object-fill absolute top-5 right-7" src="/images/flags/{{ $c->code }}.png" alt="">
@@ -26,6 +26,9 @@
                         <span class="font-medium">Connections</span>
                         <span class="text-4xl font-thin">0</span>
                     </div>
+                    <form action="">
+                        <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">Connect</button>
+                    </form>
                 </div>
             </figure>
         </a>

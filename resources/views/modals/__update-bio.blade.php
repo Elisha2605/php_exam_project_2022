@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <!--  -->
                 <h1 class="text-4xl mb-2">Edit Bio</h1>
-                <form action="{{ route('updateBio', auth()->user()->id) }}" method="POST">
+                <form action="{{ route('profile.update.bio', auth()->user()) }}" method="POST">
                     @method('PATCH')
                     @csrf
                     <textarea oninput="updateBioCharacters()"  value="hello" name="bio" id="bio" rows="10" class="bio block p-2.5 w-full outline-none 

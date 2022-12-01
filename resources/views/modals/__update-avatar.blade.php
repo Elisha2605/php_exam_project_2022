@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered w-4/5" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <form action="{{ route('updateAvatar', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('profile.update.avatar', auth()->user()) }}" method="POST" enctype="multipart/form-data">
                     {{method_field('PATCH')}} {{-- @method('PATCH') --}}
                     @csrf
                     <h1 class="text-3xl mb-2">Edit image</h1>

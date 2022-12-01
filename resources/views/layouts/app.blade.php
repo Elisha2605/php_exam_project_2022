@@ -16,7 +16,7 @@
     <nav class="p-4 h-24 bg-white flex justify-between sticky top-0 z-30 w-full">
         <ul class="flex items-center justify-center pl-20">
             <li>
-                <a class="p-3" href="">
+                <a class="p-3" href="{{ route('home.show') }}">
                     <img class="w-48" src="/logo.png" alt="">
                 </a>
             </li>
@@ -24,11 +24,16 @@
         @auth
         <ul class="flex items-center pr-20">
             <li class="">
-                <a href="{{ route('home') }}" class="p-3">Home</a>
+                <a href="{{ route('home.show') }}" class="p-3">Home</a>
             </li>
             <li class="">
-                <a href="{{ route('userProfile', auth()->user()->id) }}" class="p-3">Profile</a>
+                <a href="{{ route('profile.show', auth()->user()) }}" class="p-3">Profile</a>
             </li>
+            @if(auth()->user()->is_admin)
+            <li class="">
+                <a href="{{ route('admin') }}" class="p-3">Admin panel</a>
+            </li>
+            @endif
             |
             <li>
                 <div class="flex dropdown show pl-3">
@@ -37,7 +42,7 @@
                     <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="{{ route('updateProfile', auth()->user()->id) }}">Edit profile</a>
+                        <a class="dropdown-item" href="{{ route('profile.update.view', auth()->user()->id) }}">Edit profile</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                     </div>
                 </div>

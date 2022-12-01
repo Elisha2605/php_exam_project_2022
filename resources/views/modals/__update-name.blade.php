@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <!--  -->
                 <h1 class="text-4xl mb-2">Edit Name</h1>
-                <form action="{{ route('updateName', auth()->user()->id) }}" method="POST">
+                <form action="{{ route('profile.update.name', auth()->user()) }}" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="mb-2">

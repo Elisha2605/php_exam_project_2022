@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class UserUpdateNameController extends Controller
 {
-    public function updateName(Request $resquest, $id) {
+    public function updateName(Request $resquest, User $user) {
         $this->validate($resquest, [
             'name' => 'max:255',
             'lastname' => 'max:255'
         ]);
-        User::find($id)->update([
+        User::find($user->id)->update([
             'name' => $resquest->name,
             'lastname' => $resquest->lastname,
             'updated_at' => NOW()

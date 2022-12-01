@@ -27,6 +27,10 @@ class SignupController extends Controller
             'country' => 'required',
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
         ]);
+
+        // check if user is Danish
+        $is_dane = ($request->country == 'DK') ? true : false;
+
         // upload image
         if($request->hasFile('avatar')) {
             $image = $request->file('avatar');
@@ -34,7 +38,6 @@ class SignupController extends Controller
             $image_path = public_path('/uploads/avatars/');
             
             $image->move($image_path, $image_name);
-            
             // create user with image
             $user = User::create([
                 'name' => $request->name,
@@ -44,8 +47,10 @@ class SignupController extends Controller
                 'date_of_birth' => $request->date_of_birth,
                 'country' => $request->country,
                 'avatar' => $image_name,
+                'is_dane' => $is_dane
             ]);
         } else {
+            
             // create without image
             $user = User::create([
                 'name' => $request->name,
@@ -54,12 +59,13 @@ class SignupController extends Controller
                 'password' => Hash::make($request->password),
                 'date_of_birth' => $request->date_of_birth,
                 'country' => $request->country,
+                'is_dane' => $is_dane
             ]);
         }
         
         // insert country
-        $selected_data = $request->country;
         $user_id = $this->lastCreatedUserId = $user->id;
+        $selected_data = $request->country;
 
         $query = DB::table('countries')
             ->select('id')
@@ -67,7 +73,6 @@ class SignupController extends Controller
             ->get();
 
         $code_id = $query->pluck('id');
-        
         $data = [
             'user_id' => $user_id,
             'country_id' => $code_id[0],

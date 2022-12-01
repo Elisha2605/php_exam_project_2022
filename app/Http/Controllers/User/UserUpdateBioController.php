@@ -8,12 +8,12 @@ use App\Models\User;
 
 class UserUpdateBioController extends Controller
 {
-    public function updateBio(Request $request, $id)
+    public function updateBio(Request $request, User $user)
     {
         $this->validate($request, [
             'bio'=>'max:400'
         ]);
-        User::find($id)->update([
+        User::find($user->id)->update([
             'bio' => $request->bio,
         ]);
         return redirect()->back();

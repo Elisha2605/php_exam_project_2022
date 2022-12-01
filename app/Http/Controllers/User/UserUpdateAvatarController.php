@@ -8,7 +8,7 @@ use App\Models\User;
 
 class UserUpdateAvatarController extends Controller
 {
-    public function updateAvatar(Request $request, $id)
+    public function updateAvatar(Request $request, User $user)
     {
         $this->validate($request, [
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
@@ -20,7 +20,7 @@ class UserUpdateAvatarController extends Controller
 
             $image->move($image_path, $image_name);
 
-            User::find($id)->update([
+            User::find($user->id)->update([
                 'avatar' => $image_name
             ]);
         }

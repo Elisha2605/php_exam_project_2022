@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <div class="bg-gray-100 border-2 w-full p-2 rounded-lg">
                     Languages
-                    <form action="{{ route('updateLanguage', auth()->user()->id) }}" method="POST">
+                    <form action="{{ route('profile.update.language', auth()->user()) }}" method="POST">
                         @method('PATCH')
                         @csrf
                         <div class="form-group w-full">

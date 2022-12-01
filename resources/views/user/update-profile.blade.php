@@ -10,7 +10,7 @@
 <!-- EndModals -->
 <div class="w-4/5 h-1/3 mt-6 bg-white grid p-10  grid-cols-2 mx-auto text-center divide-x shadow-xl rounded-lg">
     <div class="p-4 text-black relative">
-        <a class="cursel-pointer top-0 left-0 absolute" href="{{ route('userProfile', auth()->user()->id) }}">
+        <a class="cursel-pointer top-0 left-0 absolute" href="{{ route('profile.show', auth()->user()) }}">
             <img src="/svg/back-icon.svg" class="bg-gray-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer inline-block"></img>
             <span class="text-xs">Go back</span>
         </a>
@@ -77,13 +77,15 @@
             <h3 class="text-xl font-light">Languages</h3>
             <div class="flex flex-wrap gap-2 w-full">
                 @foreach($user->languages as $language)
-                <form action="{{ route('deleteLanguage', $user->id) }}" method="POST">
+                <form action="{{ route('profile.delete.language', [auth()->user(), $language]) }}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <input name="{{$language->id}}" type="submit" class="bg-gray-800 text-sm 
+                    <button name="" type="submit" class="bg-gray-800 text-sm flex gap-3 items-center
                                 text-white font-light px-3 py-1 
                                 rounded-2xl shadow-md relative 
-                                cursor-pointer hover:bg-red-600" value="{{ $language->name }}&emsp;&emsp;&emsp; x" />
+                                cursor-pointer hover:bg-red-600">
+                                <span>{{$language->name}}</span> <span class="font-thin text-xs">X</span>
+                    </button>
                 </form>
                 @endforeach
             </div>
@@ -94,14 +96,14 @@
             </div>
             @endif
             @if($user->id == auth()->user()->id)
-            <form action="{{ route('deleteAccount', auth()->user()) }}" method="POST">
+            <form action="{{ route('profile.delete.account', auth()->user()) }}" method="POST" class="mt-3">
                 @csrf
                 @method('DELETE')
                 <button onclick="return confirm('Are you sure you want to delete your account?')" class="flex flex-row bg-red-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer">
                     <img src="/svg/delete-icon.svg"></img>
                     <div class="flex flex-col pl-2 items-center">
                         <span class="text-xs text-red-600">Delete</span>
-                        <span class="text-xs text-red-600">(account)</span>
+                        <span class="text-xs text-red-600">account</span>
                     </div>
                 </button>
             </form>
