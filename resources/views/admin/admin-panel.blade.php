@@ -32,10 +32,10 @@
                         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                             <td class="flex items-center gap-3 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                 <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ $user->avatar }}" alt="Neil image">
-                                <span class="text-sm text-gray-900 font-light">Elisha Ngoma</span>
+                                <span class="text-sm text-gray-900 font-light">{{ $user->name }} {{ $user->lastname }}</span>
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                {{  $user->email }}
+                                {{ $user->email }}
                             </td>
                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                 {{ $user->created_at->format('d-m-Y') }}
@@ -44,20 +44,18 @@
                                 {{ $user->id }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <form class="cursel-pointer" href="{{ route('userProfile', $user) }}" method="post">
+                                <form action="{{ route('admin.destroy', $user) }}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <a onclick="return confirm('Are you sure you want to delete your account?')" 
-                                        href="{{ route('adminDeleteUser', $user->id) }}" 
-                                        class="flex flex-row rounded-full w-4 h-4 hover:opacity-80 cursor-pointer cursel-pointer ml-3">
+                                    <button type="submit" onclick="return confirm('Are you sure you want to delete user: {{ $user->name }} ?')" class="flex flex-row rounded-full w-4 h-4 hover:opacity-80 cursor-pointer cursel-pointer ml-3">
                                         <img src="/svg/trashcan.svg"></img>
-                                    </a>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
                         @endforeach
                         @else
-                            <p>No users yet</p>
+                        <p>No users yet</p>
                         @endif
                     </tbody>
                 </table>

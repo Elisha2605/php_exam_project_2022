@@ -51,18 +51,18 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
 //********* Http URLs *********//
 // user
-Route::get('profile/user/{id}', [UserController::class, 'show'])->name('userProfile');
-Route::get('profile/user/update-profile/{id}', [UserUpdateProfileController::class, 'updateProfile'])->name('updateProfile');
-Route::patch('profile/user/update-bio/{id}', [UserUpdateBioController::class, 'updateBio'])->name('updateBio');
-Route::patch('profile/user/update-avatar/{id}', [UserUpdateAvatarController::class, 'updateAvatar'])->name('updateAvatar');
-Route::patch('profile/user/update-language/{id}', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
-Route::patch('profile/user/update-country/{id}', [UserUpdateCountryController::class, 'updateCountry'])->name('updateCountry');
-Route::patch('profile/user/update-name/{id}', [UserUpdateNameController::class, 'updateName'])->name('updateName');
-Route::delete('profile/user/delete-language/{id}', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('deleteLanguage');
-Route::get('profile/user/delete-account/{id}', [UserDeleteAccountController::class, 'deleteAccount'])->name('deleteAccount');
+Route::get('/profile/user/{id}', [UserController::class, 'show'])->name('userProfile');
+Route::get('/profile/user/{id}/update', [UserUpdateProfileController::class, 'updateProfile'])->name('updateProfile');
+Route::patch('/profile/user/{id}/update-bio', [UserUpdateBioController::class, 'updateBio'])->name('updateBio');
+Route::patch('/profile/user/{id}/update-avatar', [UserUpdateAvatarController::class, 'updateAvatar'])->name('updateAvatar');
+Route::patch('/profile/user/{id}/update-language', [UserUpdateLanguageController::class, 'updateLanguage'])->name('updateLanguage');
+Route::patch('/profile/user/{id}/update-country', [UserUpdateCountryController::class, 'updateCountry'])->name('updateCountry');
+Route::patch('/profile/user/{id}/update-name', [UserUpdateNameController::class, 'updateName'])->name('updateName');
+Route::delete('/profile/user/{id}/delete-language', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('deleteLanguage');
+Route::delete('/profile/{user}/delete', [UserDeleteAccountController::class, 'deleteAccount'])->name('deleteAccount');
 
 // admin
-Route::get('/admin', [AdminController::class, 'show'])->name('adminPanel');
-Route::get('/admin/delete-user-account/{user}', [AdminController::class, 'adminDeleteUser'])->name('adminDeleteUser');
+Route::get('/admin', [AdminController::class, 'index'])->name('index');
+Route::delete('/admin/{user}/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 

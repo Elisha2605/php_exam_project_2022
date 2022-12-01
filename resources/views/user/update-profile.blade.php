@@ -94,15 +94,17 @@
             </div>
             @endif
             @if($user->id == auth()->user()->id)
-            <a class="cursel-pointer" href="{{ route('userProfile', auth()->user()->id) }}">
-                <a onclick="return confirm('Are you sure you want to delete your account?')" href="{{ route('deleteAccount', auth()->user()->id) }}" class="flex flex-row bg-red-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer">
+            <form action="{{ route('deleteAccount', auth()->user()) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button onclick="return confirm('Are you sure you want to delete your account?')" class="flex flex-row bg-red-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer">
                     <img src="/svg/delete-icon.svg"></img>
                     <div class="flex flex-col pl-2 items-center">
                         <span class="text-xs text-red-600">Delete</span>
                         <span class="text-xs text-red-600">(account)</span>
                     </div>
-                </a>
-            </a>
+                </button>
+            </form>
             @endif
         </div>
     </div>

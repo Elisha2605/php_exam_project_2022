@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function show() {
+    public function index() {
         $users = User::paginate(4);
         return view('admin.admin-panel', ['users' => $users]);
     }
-    public function adminDeleteUser(User $user) {
+    public function destroy(User $user) {
         $user->delete();
         return redirect()->back();
     }
