@@ -14,6 +14,7 @@ use App\Http\Controllers\User\UserUpdateProfileController;
 use App\Http\Controllers\User\UserDeleteLanguageController;
 use App\Http\Controllers\User\UserDeleteAccountController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Connection\ConnectionController;
 use App\Http\Controllers\Home\HomeController;
 use App\Models\User;
 
@@ -67,6 +68,9 @@ Route::patch('/user/{user}/profile/update/country', [UserUpdateCountryController
 Route::patch('/user/{user}/profile/name', [UserUpdateNameController::class, 'updateName'])->name('profile.update.name');
 Route::delete('/user/{user}/profile/delete/{code}/language', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('profile.delete.language');
 Route::delete('/user/{user}/profile/delete/account', [UserDeleteAccountController::class, 'deleteAccount'])->name('profile.delete.account');
+
+// connection
+Route::post('/connection/request/{user}/to/{id}', [ConnectionController::class, 'requestConnection'])->name('connection.request');
 
 
 // admin

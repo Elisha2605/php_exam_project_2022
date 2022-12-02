@@ -21,7 +21,7 @@ class AdminController extends Controller
             abort(403);
         }
         
-        $users = User::paginate(4);
+        $users = User::paginate(5);
         return view('admin.admin-panel', ['users' => $users]);
     }
     public function destroy(User $user) {

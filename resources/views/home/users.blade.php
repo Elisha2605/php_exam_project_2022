@@ -24,9 +24,10 @@
                     </div>
                     <div class="flex flex-col justify-center items-center mt-3">
                         <span class="font-medium">Connections</span>
-                        <span class="text-4xl font-thin">0</span>
+                        <span class="text-4xl font-thin">{{ $user->connections_req->count() }}</span>
                     </div>
-                    <form action="">
+                    <form action="{{ route('connection.request', [auth()->user(), $user->id]) }}" method="POST">
+                        @csrf
                         <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">Connect</button>
                     </form>
                 </div>

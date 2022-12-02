@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Language;
 use App\Models\Country;
+use App\Models\Connection;
 
 class User extends Authenticatable
 {
@@ -58,5 +59,11 @@ class User extends Authenticatable
     }
     public function country() {
         return $this->belongsToMany(Country::class, 'user_country', 'user_id', 'country_id');
+    }
+    public function connections_res() {
+        return $this->belongsToMany(User::class, 'user_connections', 'user_from', 'user_to');
+    }
+    public function connections_req() {
+        return $this->belongsToMany(User::class, 'user_connections', 'user_to', 'user_from');
     }
 }
