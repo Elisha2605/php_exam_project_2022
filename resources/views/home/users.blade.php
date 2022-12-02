@@ -26,10 +26,27 @@
                         <span class="font-medium">Connections</span>
                         <span class="text-4xl font-thin">{{ $user->connections_request->count() }}</span>
                     </div>
+                    @if($user->connectionStatus(auth()->user()) === 'Pending')
                     <form action="{{ route('connection.request', $user) }}" method="POST">
                         @csrf
-                        <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">Connect</button>
+                        <button class="bg-yellow-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
                     </form>
+                    @elseif($user->connectionStatus(auth()->user()) === 'Approve')
+                    <form action="{{ route('connection.request', $user) }}" method="POST">
+                        @csrf
+                        <button class="bg-yellow-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
+                    </form>
+                    @elseif($user->connectionStatus(auth()->user()) === 'Connected')
+                    <form action="{{ route('connection.request', $user) }}" method="POST">
+                        @csrf
+                        <button class="bg-green-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
+                    </form>
+                    @else
+                    <form action="{{ route('connection.request', $user) }}" method="POST">
+                        @csrf
+                        <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
+                    </form>
+                    @endif
                 </div>
             </figure>
         </a>

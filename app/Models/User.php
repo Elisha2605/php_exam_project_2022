@@ -81,11 +81,11 @@ class User extends Authenticatable
         if ($this->hasRequestFrom($user) && !$this->hasAcceptedRequest($user)) {
             return 'Pending';
         } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
-            return 'Pending';
+            return 'Approve';
         } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
             return 'Connected';
         } else {
-            return 'No request';
+            return 'Connect';
         }
     }
 }
