@@ -60,10 +60,32 @@ class User extends Authenticatable
     public function country() {
         return $this->belongsToMany(Country::class, 'user_country', 'user_id', 'country_id');
     }
-    public function connections_res() {
+    public function connections_request() {
+        return $this->belongsToMany(User::class, 'user_connections', 'user_to', 'user_from');
+    }
+    public function connections_received() {
         return $this->belongsToMany(User::class, 'user_connections', 'user_from', 'user_to');
     }
-    public function connections_req() {
-        return $this->belongsToMany(User::class, 'user_connections', 'user_to', 'user_from');
+
+    // helper functions
+    public function hasRequestFrom(User $user) 
+    {
+        return $this->connections_request->contains($user->id);
+    }
+    public function hasAcceptedRequest(User $user) 
+    {
+        return $this->connections_received->contains($user->id);
+    }
+
+    public function connectionStatus(User $user) {
+        if ($this->hasRequestFrom($user) && !$this->hasAcceptedRequest($user)) {
+            return 'Pending';
+        } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
+            return 'Pending';
+        } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
+            return 'Connected';
+        } else {
+            return 'No request';
+        }
     }
 }

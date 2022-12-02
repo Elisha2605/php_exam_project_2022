@@ -15,6 +15,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+   
     public function show() 
     {   
         if (Auth::user()->is_admin) {

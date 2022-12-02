@@ -6,7 +6,7 @@
         @foreach($users as $user)
         <a href="{{ route('profile.show', $user) }}">
             <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter hover:grayscale-0"> <!-- grayscale-->
-                <div class="flex flex-col justify-center items-center w-80 h-auto bg-white p-5 rounded-3xl scale-100 hover:scale-105 duration-300 relative">
+                <div class="flex flex-col justify-center items-center w-80 bg-white p-5 rounded-3xl scale-100 hover:scale-105 duration-300 relative">
                     @foreach($user->country as $c)
                     <img class="w-8 h-5 object-fill absolute top-5 right-7" src="/images/flags/{{ $c->code }}.png" alt="">
                     @endforeach
@@ -24,9 +24,9 @@
                     </div>
                     <div class="flex flex-col justify-center items-center mt-3">
                         <span class="font-medium">Connections</span>
-                        <span class="text-4xl font-thin">{{ $user->connections_req->count() }}</span>
+                        <span class="text-4xl font-thin">{{ $user->connections_request->count() }}</span>
                     </div>
-                    <form action="{{ route('connection.request', [auth()->user(), $user->id]) }}" method="POST">
+                    <form action="{{ route('connection.request', $user) }}" method="POST">
                         @csrf
                         <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">Connect</button>
                     </form>
