@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Language;
 use App\Models\Country;
 use App\Models\Connection;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -54,38 +55,76 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // relations
     public function languages() {
         return $this->belongsToMany(Language::class, 'user_languages', 'user_id', 'lang_id');
     }
     public function country() {
         return $this->belongsToMany(Country::class, 'user_country', 'user_id', 'country_id');
     }
-    public function connections_request() {
+    public function connection_received() {
         return $this->belongsToMany(User::class, 'user_connections', 'user_to', 'user_from');
     }
-    public function connections_received() {
+    public function connection_request() {
         return $this->belongsToMany(User::class, 'user_connections', 'user_from', 'user_to');
+    }
+    public function test() {
+        return $this->belon(User::class, 'user_connections', 'user_to', 'user_from');
     }
 
     // helper functions
+    public function hasAcceptedOrSentRequest(User $user)  
+    {
+        return $this->connection_received->contains($user->id);
+    }
     public function hasRequestFrom(User $user) 
     {
-        return $this->connections_request->contains($user->id);
-    }
-    public function hasAcceptedRequest(User $user) 
-    {
-        return $this->connections_received->contains($user->id);
+        return $this->connection_request->contains($user->id);
     }
 
     public function connectionStatus(User $user) {
-        if ($this->hasRequestFrom($user) && !$this->hasAcceptedRequest($user)) {
+        if ($this->hasRequestFrom($user) && !$this->hasAcceptedOrSentRequest($user)) {
             return 'Pending';
-        } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
+        } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
             return 'Approve';
-        } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedRequest($user)) {
+        } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
             return 'Connected';
         } else {
             return 'Connect';
         }
     }
+
+    public function pendingRequest(User $user) {
+        $query = DB::select('SELECT uc1.user_from, uc1.user_to 
+                                from user_connections uc1 left join
+                                user_connections uc2 on uc2.user_from = uc1.user_to and uc2.user_to = uc1.user_from
+                                where uc2.user_from is null and uc1.user_to ='.$user->id.'
+                            '); 
+
+        // $query = DB::table('user_connections')
+        //     ->select('uc1.user_from, uc1.user_to')
+        //     ->leftJoin('user_connections', 'user_connections.user_from', '=', 'user_connections.user_to')
+        //     ->get();
+        return $query;
+    }
+
+// select uc1.user_from, uc1.user_to 
+// from user_connections uc1 left join
+// user_connections uc2 on uc2.user_from = uc1.user_to and uc2.user_to = uc1.user_from
+// where uc2.user_from is null and uc1.user_to = 1
+
+    // public function discardConnection(User $user) {
+    //     // discard from sender
+    //     if ($this->hasRequestFrom($user) && !$this->hasAcceptedOrSentRequest($user)) {
+    //         return 'discard sender';
+    //     // discard from receiver
+    //     } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
+    //         return 'discard receiver';
+    //     // discard anyone
+    //     } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
+    //         return 'discard anyone';
+    //     } else {
+    //         return 'no connection';
+    //     }
+    // }
 }

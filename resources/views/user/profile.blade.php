@@ -6,7 +6,7 @@
         <div class="flex justify-around relative">
             <a class="cursel-pointer top-0 left-0 absolute" href="{{ route('home.show')}}">
                 <img src="/svg/back-icon.svg" class="bg-gray-800 rounded-full w-8 h-8 hover:opacity-80 cursor-pointer cursel-pointer inline-block"></img>
-                <span class="text-xs">Go back</span>
+                <span class="text-xs">Home</span>
             </a>
             <img class="block mx-auto rounded-full object-cover h-[230px] w-[230px] shadow-md" src="/uploads/avatars/{{ $user->avatar }}" alt="">
         </div>

@@ -35,6 +35,17 @@
             </li>
             @endif
             |
+
+            <a  class="text-center text-white font-lg bg-red-600 w-6 h-6 ml-3 rounded-full " href="">0</a>
+
+            
+            <!-- Test -->
+            
+               
+            <!-- EndTest -->
+
+
+
             <li>
                 <div class="flex dropdown show pl-3">
                     <a class="flex flex-row items-center gap-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

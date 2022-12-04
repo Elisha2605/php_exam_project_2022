@@ -22,10 +22,12 @@
                         <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">{{ $language->name }}</span>
                         @endforeach
                     </div>
+                    
                     <div class="flex flex-col justify-center items-center mt-3">
                         <span class="font-medium">Connections</span>
-                        <span class="text-4xl font-thin">{{ $user->connections_request->count() }}</span>
+                        <span class="text-4xl font-thin">{{ $user->connection_received->count() }}</span>
                     </div>
+
                     @if($user->connectionStatus(auth()->user()) === 'Pending')
                     <form action="{{ route('connection.request', $user) }}" method="POST">
                         @csrf
@@ -41,7 +43,7 @@
                         @csrf
                         <button class="bg-green-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
                     </form>
-                    @else
+                    @else 
                     <form action="{{ route('connection.request', $user) }}" method="POST">
                         @csrf
                         <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
