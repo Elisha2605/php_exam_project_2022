@@ -35,13 +35,12 @@
             </li>
             @endif
             |
-
-            <a  class="text-center text-white font-lg bg-red-600 w-6 h-6 ml-3 rounded-full " href="">0</a>
-
-            
             <!-- Test -->
-            
-               
+            @if(count(pendingRequests(auth()->user())) > 0)
+            <a  class="text-center text-white font-lg bg-red-600 w-10 h-6 ml-3 rounded-full font-light" href="">
+                {{ count(pendingRequests(auth()->user())) }}
+            </a>
+            @endif   
             <!-- EndTest -->
 
 

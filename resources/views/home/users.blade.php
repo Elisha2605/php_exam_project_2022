@@ -25,7 +25,7 @@
                     
                     <div class="flex flex-col justify-center items-center mt-3">
                         <span class="font-medium">Connections</span>
-                        <span class="text-4xl font-thin">{{ $user->connection_received->count() }}</span>
+                        <span class="text-4xl font-thin">{{ count(approvedRequests($user)) }}</span>
                     </div>
 
                     @if($user->connectionStatus(auth()->user()) === 'Pending')

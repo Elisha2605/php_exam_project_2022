@@ -43,17 +43,21 @@ Route::post('/login', function(Request $request) {
     };
     return auth()->user();
 });
-Route::get('/connection', function() {
+Route::get('/pending-requests', function() {
     
     $AuthUser = User::find(1);
-    // $requests = $AuthUser->connection_received;
 
-    $query = DB::select('SELECT uc1.user_from, uc1.user_to 
-                                from user_connections uc1 left join
-                                user_connections uc2 on uc2.user_from = uc1.user_to and uc2.user_to = uc1.user_from
-                                where uc2.user_from is null and uc1.user_to ='.$AuthUser->id.'
-                        '); 
+    $pending_requests = pendingRequests($AuthUser);
 
 
-    return $query;
+
+    return count($pending_requests);
+});
+Route::get('/requests', function() {
+
+    $AuthUser = User::find(1);
+    
+    $aproved_requests = approvedRequests($AuthUser);
+
+    return count($aproved_requests);
 });

@@ -16,7 +16,7 @@
         </div>
         <div class="flex justify-center flex-col mt-6">
             <span class="font-medium">Connections</span>
-            <span class="text-4xl font-thin">0</span>
+            <span class="text-4xl font-thin">{{ count(approvedRequests($user)) }}</span>
         </div>
     </div>
     <div class="flex flex-col gap-3 p-4 text-black text-left">

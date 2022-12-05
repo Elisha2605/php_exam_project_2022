@@ -17,7 +17,9 @@ class ConnectionController extends Controller
     {
         DB::table('user_connections')->insert([
             'user_from' => $request->user()->id,
-            'user_to' => $user->id
+            'user_to' => $user->id,
+            'created_at' => NOW(),
+            'updated_at' => NOW()
         ]);
         return redirect()->back();
     }

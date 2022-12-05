@@ -84,34 +84,15 @@ class User extends Authenticatable
 
     public function connectionStatus(User $user) {
         if ($this->hasRequestFrom($user) && !$this->hasAcceptedOrSentRequest($user)) {
-            return 'Pending';
-        } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
             return 'Approve';
+        } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
+            return 'Pending';
         } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
             return 'Connected';
         } else {
             return 'Connect';
         }
     }
-
-    public function pendingRequest(User $user) {
-        $query = DB::select('SELECT uc1.user_from, uc1.user_to 
-                                from user_connections uc1 left join
-                                user_connections uc2 on uc2.user_from = uc1.user_to and uc2.user_to = uc1.user_from
-                                where uc2.user_from is null and uc1.user_to ='.$user->id.'
-                            '); 
-
-        // $query = DB::table('user_connections')
-        //     ->select('uc1.user_from, uc1.user_to')
-        //     ->leftJoin('user_connections', 'user_connections.user_from', '=', 'user_connections.user_to')
-        //     ->get();
-        return $query;
-    }
-
-// select uc1.user_from, uc1.user_to 
-// from user_connections uc1 left join
-// user_connections uc2 on uc2.user_from = uc1.user_to and uc2.user_to = uc1.user_from
-// where uc2.user_from is null and uc1.user_to = 1
 
     // public function discardConnection(User $user) {
     //     // discard from sender
