@@ -37,13 +37,27 @@
             |
             <!-- Test -->
             @if(count(pendingRequests(auth()->user())) > 0)
-            <a  class="text-center text-white font-lg bg-red-600 w-10 h-6 ml-3 rounded-full font-light" href="">
-                {{ count(pendingRequests(auth()->user())) }}
-            </a>
+            <div class="flex dropdown show pl-3">
+                <a class="text-center text-white font-lg bg-red-600 w-10 h-6 ml-3 rounded-full font-light dropdown-toggle" href="#" role="button" id="dropdownPendingRequests" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ count(pendingRequests(auth()->user())) }}
+                </a>
+                <div class="dropdown-menu w-80 mt-4" aria-labelledby="dropdownPendingRequests">
+                    @foreach(pendingRequests(auth()->user()) as $request)
+                    <a class="dropdown-item text-sm text-gray-900 font-light grid grid-cols-2 gap-4 w-auto">
+                        <div>
+                            <img class="w-10 h-10 object-cover rounded-full inline-block" src="/uploads/avatars/{{ $request->avatar }}" alt="">
+                            <span class="ml-2">{{ $request->name }} {{ $request->lastname }}</span>
+                        </div>
+                        <form class="flex justify-end mb-1" action="{{ route('connection.request', $request->user_from) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="notification-btn bg-gray-800 text-white text-xs font-extralight w-16 focus:outline-none rounded-full">Approve</button>
+                        </form>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
             @endif   
-            <!-- EndTest -->
-
-
+            <!-- EndTest -->            
 
             <li>
                 <div class="flex dropdown show pl-3">

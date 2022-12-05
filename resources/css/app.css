@@ -10,3 +10,7 @@ a {
 .dropdown-item:hover {
     background: rgb(237, 237, 237) !important;
 }
+
+.notification-btn {
+    margin: .375rem !important;
+}

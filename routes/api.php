@@ -46,12 +46,8 @@ Route::post('/login', function(Request $request) {
 Route::get('/pending-requests', function() {
     
     $AuthUser = User::find(1);
-
     $pending_requests = pendingRequests($AuthUser);
-
-
-
-    return count($pending_requests);
+    return $pending_requests;
 });
 Route::get('/requests', function() {
 

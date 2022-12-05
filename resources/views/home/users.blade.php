@@ -46,7 +46,7 @@
                     @else 
                     <form action="{{ route('connection.request', $user) }}" method="POST">
                         @csrf
-                        <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
+                        <button class="bg-gray-800 text-white font-light w-36 p-1 mt-2 focus:outline-none rounded-3xl">{{ $user->connectionStatus(auth()->user()) }}</button>
                     </form>
                     @endif
                 </div>
