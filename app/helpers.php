@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 if (!function_exists('pendingRequests')) {
     function pendingRequests(User $user) {
-        $query = DB::select('SELECT uc1.user_from, u.name, u.lastname, u.avatar
+        $query = DB::select('SELECT uc1.user_from, u.name, u.lastname, u.created_at, u.avatar
                                 FROM user_connections uc1 
                                 LEFT JOIN user_connections uc2 ON uc2.user_from = uc1.user_to AND uc2.user_to = uc1.user_from 
                                 LEFT JOIN users u ON uc1.user_from = u.id
@@ -17,9 +17,10 @@ if (!function_exists('pendingRequests')) {
 
 if (!function_exists('approvedRequests')) {
     function approvedRequests(User $user) {
-        $query = DB::select('SELECT uc1.user_from, uc1.user_to 
-                                FROM user_connections uc1 LEFT JOIN
-                                user_connections uc2 ON uc2.user_from = uc1.user_to AND uc2.user_to = uc1.user_from
+        $query = DB::select('SELECT uc1.user_from, u.name, u.lastname, u.created_at, u.avatar
+                                FROM user_connections uc1 
+                                LEFT JOIN user_connections uc2 ON uc2.user_from = uc1.user_to AND uc2.user_to = uc1.user_from
+                                LEFT JOIN users u ON uc1.user_from = u.id
                                 WHERE uc2.user_from ='.$user->id.'
                             '); 
         return $query;

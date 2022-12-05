@@ -70,7 +70,9 @@ Route::delete('/user/{user}/profile/delete/{code}/language', [UserDeleteLanguage
 Route::delete('/user/{user}/profile/delete/account', [UserDeleteAccountController::class, 'deleteAccount'])->name('profile.delete.account');
 
 // connection
-Route::post('/connection/request/to/{user}', [ConnectionController::class, 'requestConnection'])->name('connection.request');
+Route::get('/user/show/{user:name}/connections', [ConnectionController::class, 'show'])->name('connection.show');
+Route::post('/user/request/{user}/connection', [ConnectionController::class, 'store'])->name('connection.store');
+Route::delete('/user/discard/{user}/connection', [ConnectionController::class, 'distroy'])->name('connection.distroy');
 
 
 // admin

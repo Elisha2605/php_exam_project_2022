@@ -25,6 +25,7 @@ class User extends Authenticatable
      */
 
     protected $table = "users"; 
+
     protected $fillable = [
         'name',
         'lastname',
@@ -33,6 +34,7 @@ class User extends Authenticatable
         'date_of_birth',
         'avatar',
         'bio',
+        'created_at',
         'is_dane',
     ];
 

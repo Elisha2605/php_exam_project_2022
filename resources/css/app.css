@@ -14,3 +14,7 @@ a {
 .notification-btn {
     margin: .375rem !important;
 }
+button {
+    outline: none !important;
+    box-shadow: none !important;
+}

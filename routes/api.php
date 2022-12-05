@@ -52,8 +52,8 @@ Route::get('/pending-requests', function() {
 Route::get('/requests', function() {
 
     $AuthUser = User::find(1);
-    
+
     $aproved_requests = approvedRequests($AuthUser);
 
-    return count($aproved_requests);
+    return $aproved_requests;
 });

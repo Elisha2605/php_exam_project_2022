@@ -29,6 +29,9 @@
             <li class="">
                 <a href="{{ route('profile.show', auth()->user()) }}" class="p-3">Profile</a>
             </li>
+            <li class="">
+                <a href="{{ route('connection.show', auth()->user()) }}" class="p-3">Connections</a>
+            </li>
             @if(auth()->user()->is_admin)
             <li class="">
                 <a href="{{ route('admin') }}" class="p-3">Admin panel</a>
@@ -48,12 +51,13 @@
                             <img class="w-10 h-10 object-cover rounded-full inline-block" src="/uploads/avatars/{{ $request->avatar }}" alt="">
                             <span class="ml-2">{{ $request->name }} {{ $request->lastname }}</span>
                         </div>
-                        <form class="flex justify-end mb-1" action="{{ route('connection.request', $request->user_from) }}" method="POST">
+                        <form class="flex justify-end mb-1" action="{{ route('connection.store', $request->user_from) }}" method="POST">
                             @csrf
                             <button type="submit" class="notification-btn bg-gray-800 text-white text-xs font-extralight w-16 focus:outline-none rounded-full">Approve</button>
                         </form>
                     </a>
                     @endforeach
+                    <a class="text-gray-900 flex justify-center font-light text-xs " href="{{ route('connection.show', auth()->user()) }}">View more..</a>
                 </div>
             </div>
             @endif   
@@ -64,7 +68,7 @@
                     <a class="flex flex-row items-center gap-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="text-sm text-gray-900 font-light">{{ auth()->user()->name }} {{ auth()->user()->lastname }}</span>    
                     <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ auth()->user()->avatar }}" alt="">
-                    </a>
+                    </a> 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" href="{{ route('profile.update.view', auth()->user()->id) }}">Edit profile</a>
                         <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
