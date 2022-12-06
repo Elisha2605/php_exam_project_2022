@@ -45,9 +45,10 @@ Route::post('/login', function(Request $request) {
 });
 
 Route::get('/sent-requests', function() {
-    $AuthUser = User::find(1);
     
-    return sentRequests($AuthUser);
+    $user = User::find(65);
+    
+    return sentRequests($user);
 });
 
 Route::get('/pending-requests', function() {
@@ -65,7 +66,7 @@ Route::get('/approved-requests', function() {
     return $aproved_requests;
 });
 
-Route::post('/request', function(Request $request) {
+Route::delete('/delete-request', function(Request $request) {
 
     $user = User::find($request->user_from)->id;
     $AuthUser = User::find($request->user_to)->id;

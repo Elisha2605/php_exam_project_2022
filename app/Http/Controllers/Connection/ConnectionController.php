@@ -16,11 +16,13 @@ class ConnectionController extends Controller
     {
         $pending_requests = pendingRequests(Auth::user());
         $approved_requests = approvedRequests(Auth::user());
+        $sent_requests = sentRequests(Auth::user());
 
         return view('connection.connection', [
             "user" => $user,
             "pending_requests" => $pending_requests,
-            "approved_requests" => $approved_requests
+            "approved_requests" => $approved_requests,
+            "sent_requests" => $sent_requests
         ]);
     }
 
