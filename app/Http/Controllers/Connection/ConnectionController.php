@@ -28,6 +28,13 @@ class ConnectionController extends Controller
 
     public function store(Request $request, User $user)
     {
+        // toggle connection
+        if ($request->user()->hasRequestFrom($user)) {
+            DB::select('DELETE from user_connections
+                        WHERE (user_from, user_to) IN 
+                        (('.$request->user()->id.', '.$user->id.')) '); 
+            return back()->with('diconnected');
+        }
 
         DB::table('user_connections')->insert([
             'user_from' => $request->user()->id,
@@ -47,4 +54,5 @@ class ConnectionController extends Controller
                         '); 
         return redirect()->back();
     }
+
 }

@@ -47,8 +47,10 @@ Route::post('/login', function(Request $request) {
 Route::get('/sent-requests', function() {
     
     $user = User::find(1);
+    $another_user = User::find(2);
     
-    return sentRequests($user);
+    // return sentRequests($user);
+    return $user->hasRequestFrom($another_user);
 });
 
 Route::get('/pending-requests', function() {

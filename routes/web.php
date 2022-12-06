@@ -16,20 +16,6 @@ use App\Http\Controllers\User\UserDeleteAccountController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Connection\ConnectionController;
 use App\Http\Controllers\Home\HomeController;
-use App\Models\User;
-
-use App\Http\Controllers\TestController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 //********* views  *********//
@@ -60,19 +46,19 @@ Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/user/{user:name}/profile', [UserController::class, 'show'])->name('profile.show');
 Route::get('/user/{user:name}/profile/update', [UserUpdateProfileController::class, 'updateProfile'])->name('profile.update.view');
 
-
-Route::patch('/user/{user}/profile/update/bio', [UserUpdateBioController::class, 'updateBio'])->name('profile.update.bio');
-Route::patch('/user/{user}/profile/update/avatar', [UserUpdateAvatarController::class, 'updateAvatar'])->name('profile.update.avatar');
-Route::patch('/user/{user}/profile/update/language', [UserUpdateLanguageController::class, 'updateLanguage'])->name('profile.update.language');
-Route::patch('/user/{user}/profile/update/country', [UserUpdateCountryController::class, 'updateCountry'])->name('profile.update.country');
-Route::patch('/user/{user}/profile/name', [UserUpdateNameController::class, 'updateName'])->name('profile.update.name');
-Route::delete('/user/{user}/profile/delete/{code}/language', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('profile.delete.language');
-Route::delete('/user/{user}/profile/delete/account', [UserDeleteAccountController::class, 'deleteAccount'])->name('profile.delete.account');
+// profile
+Route::patch('/profile/{user}/update/bio', [UserUpdateBioController::class, 'updateBio'])->name('profile.update.bio');
+Route::patch('/profile/{user}/update/avatar', [UserUpdateAvatarController::class, 'updateAvatar'])->name('profile.update.avatar');
+Route::patch('/profile/{user}/update/language', [UserUpdateLanguageController::class, 'updateLanguage'])->name('profile.update.language');
+Route::patch('/profile/{user}/update/country', [UserUpdateCountryController::class, 'updateCountry'])->name('profile.update.country');
+Route::patch('/profile/{user}/name', [UserUpdateNameController::class, 'updateName'])->name('profile.update.name');
+Route::delete('/profile/{user}delete/{code}/language', [UserDeleteLanguageController::class, 'deleteLanguage'])->name('profile.delete.language');
+Route::delete('/profile/{user}delete/account', [UserDeleteAccountController::class, 'deleteAccount'])->name('profile.delete.account');
 
 // connection
-Route::get('/user/show/{user:name}/connections', [ConnectionController::class, 'show'])->name('connection.show');
-Route::post('/user/request/{user}/connection', [ConnectionController::class, 'store'])->name('connection.store');
-Route::delete('/user/discard/{user}/connection', [ConnectionController::class, 'distroy'])->name('connection.distroy');
+Route::get('/connections/show/{user:name}', [ConnectionController::class, 'show'])->name('connection.show');
+Route::post('/connection/request/{user}', [ConnectionController::class, 'store'])->name('connection.store');
+Route::delete('/connection/discard/{user}', [ConnectionController::class, 'distroy'])->name('connection.distroy');
 
 
 // admin
