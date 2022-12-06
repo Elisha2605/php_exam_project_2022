@@ -26,3 +26,14 @@ if (!function_exists('approvedRequests')) {
         return $query;
     }
 }
+
+if (!function_exists('sentRequests')) {
+    function sentRequests(User $user) {
+        $query = DB::select('SELECT uc1.user_from, uc1.user_to
+                                FROM user_connections uc1 
+                                LEFT JOIN user_connections uc2 ON uc2.user_from = uc1.user_from 
+                                WHERE uc1.user_from ='.$user->id.'
+                            '); 
+        return $query;
+    }
+}

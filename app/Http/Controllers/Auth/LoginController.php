@@ -29,6 +29,6 @@ class LoginController extends Controller
         if (Auth::user()->is_admin) {
             return redirect()->route('admin');
         }
-        return redirect()->route('home.show', Auth::user());
+        return redirect()->route('home.show');
     }
 }

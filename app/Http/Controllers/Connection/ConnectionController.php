@@ -38,15 +38,11 @@ class ConnectionController extends Controller
 
     public function distroy(Request $request, User $user)
     {
-        // dd($user);
-        DB::table('user_connections')
-            ->where('user_from', $user->id)
-            ->orWhere('user_to', $request->id)
-
-            ->orWhere('user_from', $request->id)
-            ->orWhere('user_to', $user->id)
-            ->delete();
-
+        DB::select('DELETE from user_connections
+                        WHERE (user_from, user_to) IN 
+                        (('.$user->id.', '.$request->user()->id.'), 
+                        ('.$request->user()->id.', '.$user->id.')) 
+                        '); 
         return redirect()->back();
     }
 }

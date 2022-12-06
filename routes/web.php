@@ -41,7 +41,7 @@ use App\Http\Controllers\TestController;
 // })->name('index');
 
 //home
-Route::get('/profile/users', [HomeController::class, 'show'])->name('home.show');
+Route::get('/home/users', [HomeController::class, 'show'])->name('home.show');
 
 
 //********* Auth URLs *********//

@@ -57,7 +57,7 @@
                         </form>
                     </a>
                     @endforeach
-                    <a class="text-gray-900 flex justify-center font-light text-xs " href="{{ route('connection.show', auth()->user()) }}">View more..</a>
+                    <a class="text-gray-900 flex justify-center font-light text-sm" href="{{ route('connection.show', auth()->user()) }}"><span class="hover:text-blue-500">View more..</span></a>
                 </div>
             </div>
             @endif   

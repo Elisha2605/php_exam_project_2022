@@ -43,17 +43,37 @@ Route::post('/login', function(Request $request) {
     };
     return auth()->user();
 });
-Route::get('/pending-requests', function() {
+
+Route::get('/sent-requests', function() {
+    $AuthUser = User::find(1);
     
+    return sentRequests($AuthUser);
+});
+
+Route::get('/pending-requests', function() {
     $AuthUser = User::find(1);
     $pending_requests = pendingRequests($AuthUser);
     return $pending_requests;
 });
-Route::get('/requests', function() {
+
+Route::get('/approved-requests', function() {
 
     $AuthUser = User::find(1);
 
     $aproved_requests = approvedRequests($AuthUser);
 
     return $aproved_requests;
+});
+
+Route::post('/request', function(Request $request) {
+
+    $user = User::find($request->user_from)->id;
+    $AuthUser = User::find($request->user_to)->id;
+
+    $query = DB::select('DELETE from user_connections
+                        WHERE (user_from, user_to) IN 
+                        (('.$user.', '.$AuthUser.'), 
+                        ('.$AuthUser.', '.$user.')) 
+                        '); 
+    return $query;
 });

@@ -86,17 +86,5 @@
 
 </div>
 
-<!-- <div class="bg-yellow-500 flex flex-col w-3/5 mx-auto">
-  <div class="w-4/5  grid grid-cols-4 mx-auto">
-    <div>
-    <img class="w-10 h-10 object-cover rounded-full inline-block" src="/uploads/avatars/{{ $request->avatar }}" alt="">
-      <span class="ml-2">Elisha Ngoma</span>
-    </div>
-    <form action="" method="POST">
-        <button class="bg-gray-800 text-white font-light w-20  rounded-3xl">Approve</button>
-    </form>
-  </div>
-</div> -->
-
 
 @endsection
