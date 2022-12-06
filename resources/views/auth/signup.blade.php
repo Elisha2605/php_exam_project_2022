@@ -45,7 +45,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-4">
+                <div class="mb-4"> 
                     <label for="password" class="sr-only">Password</label>
                     <input type="" name="password" id="name" placeholder="Password" 
                             class="bg-gray-100 border-2 w-full p-2 rounded-lg

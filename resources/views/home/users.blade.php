@@ -22,7 +22,7 @@
                         <span class="bg-gray-800 text-xs text-white font-light px-3 py-0.5 rounded-2xl shadow-md">{{ $language->name }}</span>
                         @endforeach
                     </div>
-                    
+
                     <div class="flex flex-col justify-center items-center mt-3">
                         <span class="font-medium">Connections</span>
                         <span class="text-4xl font-thin">{{ count(approvedRequests($user)) }}</span>

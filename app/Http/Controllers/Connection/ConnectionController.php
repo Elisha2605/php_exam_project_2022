@@ -32,8 +32,8 @@ class ConnectionController extends Controller
         DB::table('user_connections')->insert([
             'user_from' => $request->user()->id,
             'user_to' => $user->id,
-            'created_at' => NOW(),
-            'updated_at' => NOW()
+            'created_at' => Carbon::now(env("APP_TIMEZONE")),
+            'updated_at' => Carbon::now(env("APP_TIMEZONE")),
         ]);
         return redirect()->back();
     }

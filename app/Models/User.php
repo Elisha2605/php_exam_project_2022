@@ -57,6 +57,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public $timestamps = true;
+
     // relations
     public function languages() {
         return $this->belongsToMany(Language::class, 'user_languages', 'user_id', 'lang_id');
