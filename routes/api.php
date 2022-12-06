@@ -46,7 +46,7 @@ Route::post('/login', function(Request $request) {
 
 Route::get('/sent-requests', function() {
     
-    $user = User::find(65);
+    $user = User::find(1);
     
     return sentRequests($user);
 });
