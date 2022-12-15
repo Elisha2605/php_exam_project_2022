@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UserUpdateNameController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function updateName(Request $resquest, User $user) {
         $this->validate($resquest, [
             'name' => 'max:255',

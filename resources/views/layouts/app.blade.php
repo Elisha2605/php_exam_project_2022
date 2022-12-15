@@ -15,11 +15,20 @@
 <body class="bg-gray-200">
     <nav class="p-4 h-24 bg-white flex justify-between sticky top-0 z-30 w-full">
         <ul class="flex items-center justify-center pl-20">
+           
+            @auth
             <li>
                 <a class="p-3" href="{{ route('home.show') }}">
                     <img class="w-48" src="/logo.png" alt="">
                 </a>
             </li>
+            @else
+            <li>
+                <a class="p-3" href="{{ route('index') }}">
+                    <img class="w-48" src="/logo.png" alt="">
+                </a>
+            </li>
+            @endauth
         </ul>
         @auth
         <ul class="flex items-center pr-20">
@@ -38,7 +47,6 @@
             </li>
             @endif
             |
-            <!-- Test -->
             @if(count(pendingRequests(auth()->user())) > 0)
             <div class="flex dropdown show pl-3">
                 <a class="text-center text-white font-lg bg-red-600 w-10 h-6 ml-3 rounded-full font-light dropdown-toggle" href="#" role="button" id="dropdownPendingRequests" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,9 +68,7 @@
                     <a class="text-gray-900 flex justify-center font-light text-sm" href="{{ route('connection.show', auth()->user()) }}"><span class="hover:text-blue-500">View more..</span></a>
                 </div>
             </div>
-            @endif   
-            <!-- EndTest -->            
-
+            @endif           
             <li>
                 <div class="flex dropdown show pl-3">
                     <a class="flex flex-row items-center gap-3 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,7 +94,9 @@
         </ul>
         @endguest
     </nav>
-    @yield('content')
+    <div class="w-full h-full bg-gradient-to-r from-sky-500 to-indigo-500">
+        @yield('content')
+    </div>
 
     <script src="https://unpkg.com/htmx.org@1.8.4" integrity="sha384-wg5Y/JwF7VxGk4zLsJEcAojRtlVp1FKKdGy1qN+OMtdq72WRvX/EdRdqg/LOhYeV" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

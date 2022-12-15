@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@include('cookie-consent::index')
 <div class="flex justify-center">
-    <div class="flex flex-wrap gap-5 w-9/12 p-6 rounded-lg mt-3">
+    <div class="flex flex-wrap gap-5 w-9/12 p-6 rounded-lg mt-3 ">
         @foreach($users as $user)
         <a href="{{ route('profile.show', $user) }}">
             <figure class="relative max-w-sm transition-all duration-300 cursor-pointer filter hover:grayscale-0">

@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\UserUpdateAvatarController;
 use App\Http\Controllers\User\UserUpdateBioController;
 use App\Http\Controllers\User\UserUpdateLanguageController;
@@ -20,15 +20,13 @@ use App\Http\Controllers\Home\HomeController;
 
 //********* views  *********//
 
-//index
-// Route::get('/', function() {
-//     $users = User::all();
-//     return view('home', compact('users'));
-// })->name('index');
+// index
+Route::get('/', function() {
+    return view('index');
+})->name('index');
 
 //home
 Route::get('/home/users', [HomeController::class, 'show'])->name('home.show');
-
 
 //********* Auth URLs *********//
 // signup
@@ -40,10 +38,9 @@ Route::post('/login', [LoginController::class, 'store'])->name('login');
 // logout
 Route::get('/logout', [LogoutController::class, 'store'])->name('logout');
 
-
 //********* Http URLs *********//
 // user
-Route::get('/user/{user:name}/profile', [UserController::class, 'show'])->name('profile.show');
+Route::get('/user/{user:name}/profile', [UserProfileController::class, 'show'])->name('profile.show');
 Route::get('/user/{user:name}/profile/update', [UserUpdateProfileController::class, 'updateProfile'])->name('profile.update.view');
 
 // profile
@@ -59,7 +56,6 @@ Route::delete('/profile/{user}delete/account', [UserDeleteAccountController::cla
 Route::get('/connections/show/{user:name}', [ConnectionController::class, 'show'])->name('connection.show');
 Route::post('/connection/request/{user}', [ConnectionController::class, 'store'])->name('connection.store');
 Route::delete('/connection/discard/{user}', [ConnectionController::class, 'distroy'])->name('connection.distroy');
-
 
 // admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');

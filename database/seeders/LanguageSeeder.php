@@ -17,6 +17,7 @@ class LanguageSeeder extends Seeder
     {
         DB::table('languages')->truncate();
 
+        
         $languages = [    
             ['name' => 'Abkhazian', 'code' => 'ab'],
             ['name' => 'Afar', 'code' => 'aa'],

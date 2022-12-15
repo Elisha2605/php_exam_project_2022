@@ -72,10 +72,7 @@ class User extends Authenticatable
     public function connection_request() {
         return $this->belongsToMany(User::class, 'user_connections', 'user_from', 'user_to');
     }
-    public function test() {
-        return $this->belon(User::class, 'user_connections', 'user_to', 'user_from');
-    }
-
+    
     // helper functions
     public function hasAcceptedOrSentRequest(User $user)  
     {

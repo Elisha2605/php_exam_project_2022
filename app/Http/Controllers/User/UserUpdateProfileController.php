@@ -10,6 +10,11 @@ use App\Models\Country;
 
 class UserUpdateProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function updateProfile(Request $request, $id)
     {
         return view('user.update-profile', [

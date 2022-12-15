@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="w-full h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
 <div class="flex justify-center">
     <div class="w-4/12 bg-white p-6 rounded-lg mt-3">
         @if (session('status'))
@@ -42,5 +43,6 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 @endsection

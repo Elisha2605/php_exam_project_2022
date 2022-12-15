@@ -23,7 +23,7 @@ class SignupController extends Controller
             'lastname' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|confirmed',
-            'date_of_birth' => 'required|date|before:2011-06-08',
+            'date_of_birth' => 'required',
             'country' => 'required',
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
         ]);

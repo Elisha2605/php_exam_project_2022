@@ -9,7 +9,7 @@
                 <div class="mb-4">
                     <label for="name" class="sr-only">Your name</label>
                     <input type="text" name="name" id="name" placeholder="First name" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg font-light 
                             @error('lastname') border-red-500 @enderror"
                             value="{{ old('name') }}" 
                     />
@@ -22,7 +22,7 @@
                 <div class="mb-4">
                     <label for="lastname" class="sr-only">Last name</label>
                     <input type="text" name="lastname" id="lastname" placeholder="Last name" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg font-light
                             @error('lastname') border-red-500 @enderror" 
                             value="{{ old('lastname') }}" 
                     />
@@ -35,7 +35,7 @@
                 <div class="mb-4">
                     <label for="email" class="sr-only">E-mail</label>
                     <input type="email" name="email" id="email" placeholder="E-mail" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg font-light
                             @error('email') border-red-500 @enderror" 
                             value="{{ old('email') }}" 
                     />
@@ -48,10 +48,11 @@
                 <div class="mb-4"> 
                     <label for="password" class="sr-only">Password</label>
                     <input type="" name="password" id="name" placeholder="Password" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg font-light
                             @error('password') border-red-500 @enderror" 
                             value="{{ old('') }}" 
                     />
+                    <p class="text-xs font-light pt-1">(Should be between 8 and 20)</p>
                     @error('password')
                         <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
@@ -61,7 +62,7 @@
                 <div class="mb-4">
                     <label for="password_confirmation" class="sr-only">Confirm password</label>
                     <input type="" name="password_confirmation" id="password_confirmation" placeholder="Confirm passwor" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 rounded-lg font-light
                             @error('password_confirmation') border-red-500 @enderror" 
                             value="{{ old('') }}" 
                     />
@@ -74,10 +75,10 @@
                 <div class="mb-4">
                     <label for="date_of_birth" class="sr-only">Country</label>
                     <select name="country" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 cursor-pointer rounded-lg font-light
                             @error('country') border-red-500 @enderror" id="country">
                         @foreach ($all_countries as $key => $value)
-                        <option class="" value="" selected disabled hidden>-- Select Country --</option>
+                        <option class="" value="" selected disabled hidden>(Choose Country)</option>
                         <option value="{{$key}}">{{ $value }}</option>
                         @endforeach
                     </select>
@@ -86,14 +87,16 @@
                             {{ $message }}
                         </div>
                     @enderror
+                    <p class="text-xs font-light pt-1">(You must choose a country)</p>
                 </div>
                 <div class="mb-4">
                     <label for="date_of_birth" class="sr-only">Date of birth</label>
                     <input type="date" name="date_of_birth" id="date_of_birth" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 cursor-pointer rounded-lg font-light
                             @error('date_of_bith') border-red-500 @enderror" 
                             value="{{ old('date_of_bith') }}" 
                     />
+                    <p class="text-xs font-light pt-1">(You must be over 18)</p>
                     @error('date_of_bith')
                         <div class="text-red-500 mt-2 text-sm">
                             {{ $message }}
@@ -102,7 +105,7 @@
                 </div>
                 <div class="mb-4">
                     <input type="file" name="avatar" id="avatar" 
-                            class="bg-gray-100 border-2 w-full p-2 rounded-lg
+                            class="bg-gray-100 border-2 w-full p-2 cursor-pointer rounded-lg font-light
                             @error('avatar') border-red-500 @enderror" 
                             value="{{ old('avatar') }}" 
                     />

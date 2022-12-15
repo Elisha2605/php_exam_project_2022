@@ -2,6 +2,7 @@
 @section('content')
 
 
+<div class="w-full h-screen bg-gradient-to-r from-sky-500 to-indigo-500">
 
 <div class="flex flex-col mx-auto justify-center items-center">
 <!-- Pending requests -->
@@ -9,7 +10,7 @@
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-1/2 pt-4 bg-white mt-8 rounded-lg">
     <table class="w-full">
       <tbody>
-        <h1 class="text-2xl font-normal mb-3 text-center">Pending requests</h1>
+        <h1 class="text-2xl font-light mb-3 justify-left ml-4 text-gray-600">Pending requests</h1>
         @foreach($pending_requests as $request)
         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
           <td class="flex items-center gap-3 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -34,7 +35,7 @@
                 <button type="submit" onclick="return confirm('Are you sure you want to delete user: {{ $request->name }} ?')" 
                         class="hover:bg-red-200 p-1 rounded-full text-sm text-black font-light w-24 hover:opacity-80 cursor-pointer cursel-pointer flex flex-row justify-center items-center gap-1">
                         <img class="w-3" src="/svg/trashcan.svg"></img>
-                        Discard
+                        Reject
                 </button>
               </form>
             </div>
@@ -55,7 +56,7 @@
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-1/2 pt-4 bg-white">
     <table class="w-full">
       <tbody>
-        <h1 class="text-2xl font-normal text-center">My connections</h1>
+        <h1 class="text-2xl font-light mb-3 justify-left ml-4 text-gray-600">My connections</h1>
         @foreach($approved_requests as $request)
         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
           <td class="flex items-center gap-3 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -71,10 +72,10 @@
               @method('DELETE')
               <form action="" method="POST">
                 @csrf
-                <button type="submit" onclick="return confirm('Are you sure you want to delete user: {{ $request->name }} ?')" 
+                <button type="submit" onclick="return confirm('Are you user you want to disconnect with: {{ $request->name }} ?')" 
                         class="hover:bg-red-200 p-1 rounded-full text-sm text-black font-light w-24 hover:opacity-80 cursor-pointer cursel-pointer flex flex-row justify-center items-center gap-1">
                         <img class="w-3" src="/svg/trashcan.svg"></img>
-                        Discard
+                        Disconnect
                 </button>
               </form>
             </form>
@@ -91,7 +92,7 @@
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-1/2 pt-4 bg-white">
     <table class="w-full">
       <tbody>
-        <h1 class="text-2xl font-normal text-center">Waiting for approval</h1>
+        <h1 class="text-2xl font-light mb-3 justify-left ml-4 text-gray-600">Waiting for approval</h1>
         @foreach($sent_requests as $request)
         <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
           <td class="flex items-center gap-3 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -107,10 +108,10 @@
               @method('DELETE')
               <form action="" method="POST">
                 @csrf
-                <button type="submit" onclick="return confirm('Are you sure you want to delete user: {{ $request->name }} ?')" 
+                <button type="submit" onclick="return confirm('Are you sure you want discard the request to: {{ $request->name }} ?')" 
                         class="hover:bg-red-200 p-1 rounded-full text-sm text-black font-light w-24 hover:opacity-80 cursor-pointer cursel-pointer flex flex-row justify-center items-center gap-1">
                         <img class="w-3" src="/svg/trashcan.svg"></img>
-                        Discard
+                        Undo
                 </button>
               </form>
             </form>
@@ -124,5 +125,5 @@
 
 </div>
 
-
+</div>
 @endsection

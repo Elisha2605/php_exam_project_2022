@@ -8,6 +8,11 @@ use App\Models\User;
 
 class UserUpdateBioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function updateBio(Request $request, User $user)
     {
         $this->validate($request, [

@@ -80,4 +80,3 @@ Route::delete('/delete-request', function(Request $request) {
                         '); 
     return $query;
 });
-
