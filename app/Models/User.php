@@ -11,8 +11,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Language;
 use App\Models\Country;
-use App\Models\Connection;
-use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {

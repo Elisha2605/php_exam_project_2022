@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Language;
 use App\Models\Country;
+use Illuminate\Support\Facades\Auth;
 
 class UserUpdateProfileController extends Controller
 {

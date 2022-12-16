@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="w-full h-screen bg-no-repeat bg-center bg-cover fixed" style="background-image: url('/images/bg3.jpg');">
+<div class="w-full h-screen bg-no-repeat bg-center bg-cover fixed" style="background-image: url('/images/bg9.jpg');">
     <div class="h-full flex flex-col pt-36 items-center gap-4">
 
         <h1 class="text-6xl font-thin">Welcome to <span class="font-bold">get-hygge</span></h1>
