@@ -16,6 +16,10 @@ class UserUpdateCountryController extends Controller
     
     public function updateCountry(Request $request, User $user) {
         
+        $this->validate($request, [
+            'code' => 'max:2'
+        ]);
+
         $query = DB::table('countries')
                     ->select('id')
                     ->where('code', $request->country)
@@ -23,7 +27,6 @@ class UserUpdateCountryController extends Controller
 
         $country_id = $query[0]->id;
         
-    
         DB::table('user_country')
             ->where('user_id', $user->id)
             ->update([

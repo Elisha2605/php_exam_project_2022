@@ -26,6 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // users
 Route::get('/users', function() {
+    $users = 
     return User::all();
 });
 // countries

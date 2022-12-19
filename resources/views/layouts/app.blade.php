@@ -15,7 +15,6 @@
 <body class="bg-gray-200">
     <nav class="p-4 h-24 bg-white flex justify-between sticky top-0 z-30 w-full">
         <ul class="flex items-center justify-center pl-20">
-           
             @auth
             <li>
                 <a class="p-3" href="{{ route('home.show') }}">
@@ -33,17 +32,29 @@
         @auth
         <ul class="flex items-center pr-20">
             <li class="">
-                <a href="{{ route('home.show') }}" class="p-3">Home</a>
+                <a href="{{ route('home.show') }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl">
+                    Home
+                </a>
             </li>
             <li class="">
-                <a href="{{ route('profile.show', auth()->user()) }}" class="p-3">Profile</a>
+                <a href="{{ route('profile.show', auth()->user()) }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl">
+                    Profile
+                </a>
             </li>
             <li class="">
-                <a href="{{ route('connection.show', auth()->user()) }}" class="p-3">Connections</a>
+                <a href="{{ route('connection.show', auth()->user()) }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl">
+                    Connections
+                </a>
             </li>
             @if(auth()->user()->is_admin)
             <li class="">
-                <a href="{{ route('admin') }}" class="p-3">Admin panel</a>
+                <a href="{{ route('admin') }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl">
+                    Admin panel
+                </a>
             </li>
             @endif
             |
@@ -86,10 +97,16 @@
         @guest
         <ul class="flex items-center pr-20">
             <li>
-                <a href="{{ route('login') }}" class="p-3">Login</a>
+                <a href="{{ route('login') }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl">
+                    Login
+                </a>
             </li>
             <li>
-                <a href="{{ route('signup') }}" class="p-3">Signup</a>
+                <a href="{{ route('signup') }}" 
+                    class="p-3 hover:bg-indigo-200 rounded-xl ">
+                    Signup
+                </a>
             </li>
         </ul>
         @endguest

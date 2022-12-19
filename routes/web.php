@@ -23,7 +23,7 @@ use App\Http\Controllers\Home\HomeController;
 // index
 Route::get('/', function() {
     return view('index');
-})->name('index');
+})->name('index')->middleware('guest');
 
 //home
 Route::get('/home/users', [HomeController::class, 'show'])->name('home.show');

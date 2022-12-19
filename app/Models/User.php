@@ -33,7 +33,6 @@ class User extends Authenticatable
         'avatar',
         'bio',
         'created_at',
-        'is_dane',
     ];
 
     /**

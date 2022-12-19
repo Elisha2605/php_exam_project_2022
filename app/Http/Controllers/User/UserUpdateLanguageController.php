@@ -16,6 +16,9 @@ class UserUpdateLanguageController extends Controller
     
     public function updateLanguage(Request $request, User $user)
     {
+        $this->validate($request, [
+            'code' => 'max:2'
+        ]);
         // getting code id from db
         $query = DB::table('languages')
             ->select('id')

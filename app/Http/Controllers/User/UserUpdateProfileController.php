@@ -16,8 +16,11 @@ class UserUpdateProfileController extends Controller
         $this->middleware('auth');
     }
     
-    public function updateProfile(Request $request, $id)
+    public function updateProfile($id)
     {
+        if (!Auth::user()->id === $id) {
+            abort(403, 'Unauthorized action.');
+        }
         return view('user.update-profile', [
             'user' => User::findOrFail($id), 
             'languages' => Language::all(),
