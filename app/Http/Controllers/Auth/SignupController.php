@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Country;
 
+
+
 class SignupController extends Controller
 {
     public function index() {
@@ -20,13 +22,14 @@ class SignupController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'unique:users|required|email|max:255',
             'password' => 'required|confirmed',
             'date_of_birth' => 'required',
             'country' => 'required',
             'avatar' => 'mimes:jpeg,jpg,png,gif|max:10000' // max 10000kb
         ]);
 
+       
         // check if user is Danish
         $is_dane = ($request->country == 'DK') ? true : false;
 

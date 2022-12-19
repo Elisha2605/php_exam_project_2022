@@ -31,7 +31,9 @@
                             @foreach($users as $user)
                             <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                                 <td class="flex items-center gap-3 px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    <a class="flex flex-row items-center gap-1" href="{{ route('profile.show', $user->name) }}">
                                     <img class="w-12 h-12 object-cover rounded-full" src="/uploads/avatars/{{ $user->avatar }}" alt="Neil image">
+                                </a>
                                     <span class="text-sm text-gray-900 font-light">{{ $user->name }} {{ $user->lastname }}</span>
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">

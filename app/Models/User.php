@@ -93,18 +93,4 @@ class User extends Authenticatable
         }
     }
 
-    // public function discardConnection(User $user) {
-    //     // discard from sender
-    //     if ($this->hasRequestFrom($user) && !$this->hasAcceptedOrSentRequest($user)) {
-    //         return 'discard sender';
-    //     // discard from receiver
-    //     } elseif (!$this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
-    //         return 'discard receiver';
-    //     // discard anyone
-    //     } elseif ($this->hasRequestFrom($user) && $this->hasAcceptedOrSentRequest($user)) {
-    //         return 'discard anyone';
-    //     } else {
-    //         return 'no connection';
-    //     }
-    // }
 }

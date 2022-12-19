@@ -22,7 +22,7 @@ class UserFactory extends Factory
             'lastname' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'date_of_birth' => fake()->dateTimeBetween('1950-01-01', '2012-12-31')->format('d/m/Y'),
+            'date_of_birth' => fake()->dateTimeBetween('1950-01-01', '2012-12-31'),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];

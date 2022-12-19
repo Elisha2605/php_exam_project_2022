@@ -14,13 +14,13 @@
         </p>
         <div class="flex flex-row gap-4">
             <a class="text-3xl hover:bg-sky-500/50 flex justify-center
-                            text-black-700 font-thin
-                            py-2 px-4 border 
+                            text-black-700 font-thin 
+                            py-2 px-4 border-2 border-blue-400
                             rounded-full w-60" href="{{ route('login') }}">Login
             </a>
-            <a class="text-3xl hover:bg-sky-500/50 flex justify-center
+            <a class="text-3xl hover:bg-red-500/50 flex justify-center
                             text-black-700 font-thin
-                            py-2 px-4 border 
+                            py-2 px-4 border-2 border-red-400
                             rounded-full w-60" href="{{ route('signup') }}">Signup
             </a>
         </div>

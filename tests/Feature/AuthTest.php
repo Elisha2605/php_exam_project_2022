@@ -15,8 +15,9 @@ class AuthTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/login');
+        $response = $this->post('/signup',);
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
+
 }
