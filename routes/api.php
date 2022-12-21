@@ -42,8 +42,6 @@ Route::get('/languages', function() {
  * Signup
  */
 Route::post('/signup', function(Request $request) {
-
-    
     try {
         $is_dane = ($request->country == 'DK') ? true : false;
 
@@ -55,8 +53,11 @@ Route::post('/signup', function(Request $request) {
             'country' => $request->country,
             'date_of_birth' => $request->date_of_birth,
             'is_dane' => $is_dane
+        ]);
+        return response()->json([
+            'Success' => 'user ' . $user->name . ' has signed up',
+            'user' => $user
         ], 201);
-        return $user;
     } catch (Exception $e) {
         report($e);
         return response()->json([
@@ -74,11 +75,12 @@ Route::post('/login', function(Request $request) {
         if (!auth()->attempt($request->only('email', 'password'), $request->remember)) {
             return response()->json([
                 'Error' => 'Invalid login details'
-            ], 402);
+            ], 400);
         };
         return response()->json([
-            'Success' => 'user ' . auth()->user()->name . ' logged in'
-        ], 200);;
+            'Success' => 'user ' . auth()->user()->name . ' logged in',
+            'user' => auth()->user()
+        ], 200);
     } catch (Exception $e) {
         report($e);
         return response()->json([
@@ -103,7 +105,7 @@ Route::get('/sent-requests', function(Request $request) {
             ], 200);
         } else {
             return response()->json([
-                'False' => 'Either ' . '(' . $user_one->name . ')' . ' or ' . '(' . $user_two->name . ')' . ' has not sent a request' 
+                'False' => 'Neither ' . '(' . $user_one->name . ')' . ' or ' . '(' . $user_two->name . ')' . ' has not sent a request' 
             ], 404);
         }
     } catch(TypeError $e) {

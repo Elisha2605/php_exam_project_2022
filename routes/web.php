@@ -18,7 +18,7 @@ use App\Http\Controllers\Connection\ConnectionController;
 use App\Http\Controllers\Home\HomeController;
 
 
-//********* views  *********//
+//********* views  *********//      
 
 // index
 Route::get('/', function() {
@@ -58,7 +58,7 @@ Route::post('/connection/request/{user}', [ConnectionController::class, 'store']
 Route::delete('/connection/discard/{user}', [ConnectionController::class, 'distroy'])->name('connection.distroy');
 
 // admin
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin'); 
 Route::delete('/admin/{user}/delete', [AdminController::class, 'destroy'])->name('admin.destroy');
 
 
